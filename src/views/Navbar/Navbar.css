@@ -1,0 +1,15 @@
+.navbar {
+    background-color: rgb(122, 122, 122);
+    color: white;
+    height: 5rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.navbar a {
+    font-size: 2em;
+    text-decoration: none;
+    color: white;
+}
