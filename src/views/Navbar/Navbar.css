@@ -9,7 +9,20 @@
 }
 
 .navbar a {
-    font-size: 2em;
+    font-size: 1.5em;
     text-decoration: none;
     color: white;
+}
+
+.navbar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    padding: 1rem;
 }

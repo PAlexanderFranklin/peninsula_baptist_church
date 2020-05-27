@@ -1,10 +1,10 @@
 import React from 'react';
 import './Tab.css';
 
-function Tab() {
+function Tab(props) {
   return (
     <li className="tab">
-      <h1>Tab here</h1>
+      <a href={props.link}>{props.children}</a>
     </li>
   );
 }

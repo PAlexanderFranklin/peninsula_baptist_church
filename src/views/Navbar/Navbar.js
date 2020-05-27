@@ -6,15 +6,12 @@ function Navbar() {
   return (
     <header className="navbar">
       <nav>
-        <div>
-          <a href="/">Peninsula Baptist Church</a>
-        </div>
         <ul>
-          <Tab />
-          <Tab />
-          <Tab />
-          <Tab />
-          <Tab />
+          <Tab link="/">Peninsula Baptist Church</Tab>
+          <Tab link="/gallery">Gallery</Tab>
+          <Tab link="/service-times">Service Times</Tab>
+          <Tab link="/location">Location</Tab>
+          <Tab link="/events">Events</Tab>
         </ul>
       </nav>
     </header>
