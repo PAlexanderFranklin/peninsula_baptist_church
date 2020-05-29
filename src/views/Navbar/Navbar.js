@@ -9,8 +9,7 @@ function Navbar() {
         <ul>
           <Tab link="/">Peninsula Baptist Church</Tab>
           <Tab link="/gallery">Gallery</Tab>
-          <Tab link="/service-times">Service Times</Tab>
-          <Tab link="/location">Location</Tab>
+          <Tab link="/visit">Visit</Tab>
           <Tab link="/events">Events</Tab>
         </ul>
       </nav>

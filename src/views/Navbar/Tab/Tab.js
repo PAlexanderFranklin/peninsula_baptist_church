@@ -1,10 +1,11 @@
 import React from 'react';
 import './Tab.css';
+import {Link} from 'react-router-dom'
 
 function Tab(props) {
   return (
     <li className="tab">
-      <a href={props.link}>{props.children}</a>
+      <Link to={props.link}>{props.children}</Link>
     </li>
   );
 }
