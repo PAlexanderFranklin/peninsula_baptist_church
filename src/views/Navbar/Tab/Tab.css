@@ -1,3 +1,12 @@
+.tab {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: black solid 2px;
+    background: linear-gradient(rgb(48, 48, 48), grey);
+}
+
 .tab .active {
     color: gold;
 }

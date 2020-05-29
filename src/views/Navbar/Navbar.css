@@ -17,11 +17,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-content: center;
     list-style: none;
+    height: 100%;
     margin: 0;
     padding: 0;
-}
-
-.navbar li {
-    padding: 1rem;
 }
