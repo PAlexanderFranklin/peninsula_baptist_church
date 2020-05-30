@@ -1,7 +1,8 @@
 .Tab {
     flex-grow: 1;
+    height: 5rem;
     outline: black solid 2px;
-    background: linear-gradient(rgb(48, 48, 48), grey);
+    background: linear-gradient(grey, #303030);
 }
 
 .Tab a {
@@ -14,4 +15,5 @@
 
 .Tab .active {
     color: gold;
+    background: linear-gradient(#303030, grey);
 }

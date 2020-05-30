@@ -4,7 +4,7 @@ import Tab from './Tab/Tab'
 
 function Navbar() {
   return (
-    <header>
+    <header className="header">
       <nav className="Navbar">
         <ul>
           <Tab link="/">Peninsula Baptist Church</Tab>

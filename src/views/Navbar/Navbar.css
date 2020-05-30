@@ -1,6 +1,9 @@
+.header {
+    height: 5rem;
+}
+
 .Navbar {
     background-color: rgb(122, 122, 122);
-    height: 5rem;
     position: fixed;
     width: 100%;
     top: 0;
@@ -15,7 +18,7 @@
 
 .Navbar ul {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-around;
     align-content: center;
     list-style: none;
