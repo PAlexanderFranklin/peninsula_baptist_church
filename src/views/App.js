@@ -11,7 +11,6 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <div style={{marginTop: "7rem"}}></div>
       <div className="content">
         <Route path="/" exact component={Home} />
         <Route path="/gallery" exact component={Gallery} />
