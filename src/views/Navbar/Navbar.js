@@ -5,7 +5,7 @@ import Tab from './Tab/Tab'
 function Navbar() {
   return (
     <header>
-      <nav className="navbar">
+      <nav className="Navbar">
         <ul>
           <Tab link="/">Peninsula Baptist Church</Tab>
           <Tab link="/gallery">Gallery</Tab>

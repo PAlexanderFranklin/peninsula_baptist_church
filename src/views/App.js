@@ -12,10 +12,12 @@ function App() {
     <div className="App">
       <Navbar />
       <div style={{marginTop: "7rem"}}></div>
-      <Route path="/" exact component={Home} />
-      <Route path="/gallery" exact component={Gallery} />
-      <Route path="/visit" exact component={Visit} />
-      <Route path="/events" exact component={Events} />
+      <div className="content">
+        <Route path="/" exact component={Home} />
+        <Route path="/gallery" exact component={Gallery} />
+        <Route path="/visit" exact component={Visit} />
+        <Route path="/events" exact component={Events} />
+      </div>
     </div>
   );
 }
