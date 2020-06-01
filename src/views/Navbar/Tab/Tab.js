@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom'
 function Tab(props) {
   return (
     <li className="Tab">
-      <NavLink to={props.link} exact>{props.children}</NavLink>
+      <NavLink to={props.link} exact={props.exact}>{props.children}</NavLink>
     </li>
   );
 }

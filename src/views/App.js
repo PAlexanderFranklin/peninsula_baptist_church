@@ -13,9 +13,9 @@ function App() {
       <Navbar />
       <div className="content">
         <Route path="/" exact component={Home} />
-        <Route path="/gallery" exact component={Gallery} />
-        <Route path="/visit" exact component={Visit} />
-        <Route path="/events" exact component={Events} />
+        <Route path="/gallery" component={Gallery} />
+        <Route path="/visit" component={Visit} />
+        <Route path="/events" component={Events} />
       </div>
     </div>
   );
