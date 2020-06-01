@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './Navbar/Navbar'
 import Home from './Pages/Home/Home'
 import Gallery from './Pages/Gallery/Gallery'
-import Visit from './Pages/Visit/Visit'
+import Contact from './Pages/Contact/Contact'
 import Events from './Pages/Events/Events'
 import {Route} from 'react-router-dom'
 
@@ -14,7 +14,7 @@ function App() {
       <div className="content">
         <Route path="/" exact component={Home} />
         <Route path="/gallery" component={Gallery} />
-        <Route path="/visit" component={Visit} />
+        <Route path="/contact" component={Contact} />
         <Route path="/events" component={Events} />
       </div>
     </div>

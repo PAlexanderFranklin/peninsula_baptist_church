@@ -1,9 +1,9 @@
 import React from 'react';
-import './Visit.css';
+import './Contact.css';
 
-function Visit(props) {
+function Contact(props) {
   return (
-    <div className="visit">
+    <div className="contact">
       <div>
         <h2>Service Times</h2>
         <p>
@@ -24,4 +24,4 @@ function Visit(props) {
   );
 }
 
-export default Visit;
+export default Contact;
