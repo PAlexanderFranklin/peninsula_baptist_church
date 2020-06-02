@@ -1,13 +1,14 @@
 .Tab {
     flex-grow: 1;
     height: 5rem;
-    outline: black solid 2px;
-    background: linear-gradient(grey, #303030);
 }
 
 .Tab a {
     height: 100%;
     width: 100%;
+    padding-right: 1em;
+    outline: black solid 2px;
+    background: linear-gradient(grey, #303030);
     display: flex;
     justify-content: center;
     align-items: center;

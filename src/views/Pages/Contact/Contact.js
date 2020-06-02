@@ -20,6 +20,12 @@ function Contact(props) {
           Portland, Oregon 97217
         </p>
       </div>
+      <div>
+        <h2>Contact</h2>
+        <p>
+          Phone: 503-285-5701
+        </p>
+      </div>
     </div>
   );
 }
