@@ -3,7 +3,7 @@ import './Visit.css';
 
 function Contact(props) {
   return (
-    <div className="visit bubble">
+    <div className="Visit">
       <div>
         <h2>Service Times</h2>
         <p>

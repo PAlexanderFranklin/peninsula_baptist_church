@@ -1,11 +1,3 @@
 .App {
-  text-align: center;
-}
-
-.bubble {
-  display: inline-block;
-  padding: 1rem 2rem 1rem 2rem;
-  margin-top: 2rem;
-  background-color: white;
-  border-radius: 2em;
+  color: white;
 }
