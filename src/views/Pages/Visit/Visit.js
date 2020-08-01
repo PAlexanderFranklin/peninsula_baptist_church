@@ -1,9 +1,9 @@
 import React from 'react';
-import './Contact.css';
+import './Visit.css';
 
 function Contact(props) {
   return (
-    <div className="contact">
+    <div className="visit bubble">
       <div>
         <h2>Service Times</h2>
         <p>

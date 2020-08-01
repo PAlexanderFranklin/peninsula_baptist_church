@@ -1,20 +1,17 @@
 .Tab {
     flex-grow: 1;
     height: 5rem;
+    padding: 0rem 1rem;
 }
 
 .Tab a {
     height: 100%;
     width: 100%;
-    padding-right: 1em;
-    outline: black solid 2px;
-    background: linear-gradient(grey, #303030);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .Tab .active {
-    color: gold;
-    background: linear-gradient(#303030, grey);
+    font-weight: 500;
 }

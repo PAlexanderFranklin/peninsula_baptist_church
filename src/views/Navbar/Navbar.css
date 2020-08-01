@@ -3,11 +3,11 @@
 }
 
 .Navbar {
-    background-color: rgb(122, 122, 122);
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
+    background: linear-gradient(rgb(0, 0, 0, 0.75), rgb(0, 0, 0, 0));
 }
 
 .Navbar a {
@@ -25,4 +25,17 @@
     height: 100%;
     margin: 0;
     padding: 0;
+}
+
+.home_name {
+    font-size: 1.5rem;
+    padding-right: 10rem;
+}
+
+.nav_items {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-content: center;
+    flex-grow: .5;
 }

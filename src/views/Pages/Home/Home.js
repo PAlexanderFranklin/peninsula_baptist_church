@@ -3,7 +3,7 @@ import './Home.css';
 
 function Home() {
   return (
-    <div>
+    <div className="bubble">
       <h2>Welcome to our church!</h2>
       <p>We are a Southern Baptist Church in Portland, Oregon.</p>
       <p>We meet each Sunday and Wednesday. Our services are traditional and family-friendly.</p>
