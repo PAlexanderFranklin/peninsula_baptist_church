@@ -8,11 +8,11 @@ function Navbar() {
       <nav className="Navbar">
         <ul>
           <Tab link="/" exact="true" className="home_name">Peninsula Baptist Church</Tab>
-          <div className="nav_items">
+          {/* <div className="nav_items">
             <Tab link="/gallery">Gallery</Tab>
             <Tab link="/visit">Visit</Tab>
             <Tab link="/events">Events</Tab>
-          </div>
+          </div> */}
         </ul>
       </nav>
     </header>

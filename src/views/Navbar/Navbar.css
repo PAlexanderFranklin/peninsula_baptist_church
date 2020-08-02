@@ -7,13 +7,13 @@
     width: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient(rgb(0, 0, 0, 0.75), rgb(0, 0, 0, 0));
+    background: linear-gradient(rgb(0, 0, 0, 1), rgb(0, 0, 0, 0));
 }
 
 .Navbar a {
     font-size: 1.5em;
     text-decoration: none;
-    color: white;
+    color: rgb(231, 231, 231);
 }
 
 .Navbar ul {

@@ -3,7 +3,7 @@ import './Gallery.css';
 
 function Gallery(props) {
   return (
-    <div className="Gallery">
+    <div className="Gallery bubble">
       Pictures.
     </div>
   );
