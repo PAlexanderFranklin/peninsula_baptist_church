@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css';
 import Navbar from './Navbar/Navbar'
 import Home from './Pages/Home/Home'
-import Gallery from './Pages/Gallery/Gallery'
+import Sermons from './Pages/Sermons/Sermons'
 import Visit from './Pages/Visit/Visit'
 import Events from './Pages/Events/Events'
+import Gallery from './Pages/Gallery/Gallery'
 import Admin from './Admin/Admin'
 import {Route} from 'react-router-dom'
 
@@ -14,9 +15,10 @@ function App() {
       <Navbar />
       <div className="content">
         <Route path="/" exact component={Home} />
-        <Route path="/gallery" component={Gallery} />
+        <Route path="/sermons" component={Sermons} />
         <Route path="/visit" component={Visit} />
         <Route path="/events" component={Events} />
+        <Route path="/gallery" component={Gallery} />
         <Route path="/admin" component={Admin} />
       </div>
     </div>

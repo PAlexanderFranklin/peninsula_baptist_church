@@ -8,11 +8,12 @@ function Navbar() {
       <nav className="Navbar">
         <ul>
           <Tab link="/" exact="true" className="home_name">Peninsula Baptist Church</Tab>
-          {/* <div className="nav_items">
-            <Tab link="/gallery">Gallery</Tab>
+          <div className="nav_items">
+            <Tab link="/sermons">Sermons</Tab>
             <Tab link="/visit">Visit</Tab>
             <Tab link="/events">Events</Tab>
-          </div> */}
+            <Tab link="/gallery">Gallery</Tab>
+          </div>
         </ul>
       </nav>
     </header>
