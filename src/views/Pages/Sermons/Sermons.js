@@ -22,8 +22,7 @@ function Sermons(props) {
               title={element.title}
               series={element.series}
               url={element.url}
-              book={element.book}
-              verses={element.verses}
+              passage={element.book + " " + element.verses}
               speaker={element.speaker}
               date={element.date}/>
           )} */}
