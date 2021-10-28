@@ -4,11 +4,11 @@ import './Row.css';
 function Row(props) {
   const {title, series, url, passage, speaker, date} = props;
   return (
-    <tr className={"Row"}>
+    <tr className="Row">
       <td>{title}</td>
       <td>{series}</td>
       <td>
-        <audio src={url}>Audio didn't load properly.</audio>
+        <audio controls preload="metadata" src={url}>Audio didn't load properly.</audio>
       </td>
       <td>{passage}</td>
       <td>{speaker}</td>
