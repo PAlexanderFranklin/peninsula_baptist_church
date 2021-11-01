@@ -1,0 +1,9 @@
+audio {
+    width: 17rem;
+}
+
+@media (max-width: 60rem) {
+  audio {
+      width: 7rem;
+  }
+}

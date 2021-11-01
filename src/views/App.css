@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  --accent-color: rgb(218, 172, 22);
+  --background-color: #FFFFFF;
 }
 
 .content {
@@ -7,21 +9,11 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  background-color: var(--background-color);
 }
 
 .bubble {
   display: inline-block;
-  width: 43%;
-  padding: 1rem 2rem 2rem 6rem;
-  margin-bottom: 2rem;
-  border-radius: 1.5rem;
+  padding: 1rem 2rem 2rem 2rem;
   text-align: left;
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-@media (max-width: 60rem) {
-  .bubble {
-      width: 100%;
-      border-radius: 0rem;
-  }
 }
