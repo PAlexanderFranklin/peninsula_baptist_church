@@ -1,5 +1,5 @@
 .header {
-    height: 10rem;
+    height: var(--navbar-height);
 }
 
 .Navbar {

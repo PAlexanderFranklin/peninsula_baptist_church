@@ -4,43 +4,19 @@ import Row from "./Row";
 
 function Sermons(props) {
 
-  let sermonData = [{
-    file_name: "EM100521",
-    title: "test title",
-    series: "this is a series title",
-    url: "https://siasky.net/_A3BzfJhXm2aaPkE9mNQecOPxShKDUdoVHqurZ2ze-kjoA",
-    book: "Galatians",
-    verses: "5:13-18",
-    speaker: "Ethan Hardy",
-    date: "211005"
-  }, {
-    file_name: "EM100522",
-    title: "test title",
-    series: "this is a series title",
-    url: "https://siasky.net/_A3BzfJhXm2aaPkE9mNQecOPxShKDUdoVHqurZ2ze-kjoA",
-    book: "Galatians",
-    verses: "5:13-18",
-    speaker: "Ethan Hardy",
-    date: "211005"
-  }, {
-    file_name: "EM100523",
-    title: "test title",
-    series: "this is a series title",
-    url: "https://siasky.net/_A3BzfJhXm2aaPkE9mNQecOPxShKDUdoVHqurZ2ze-kjoA",
-    book: "Galatians",
-    verses: "5:13-18",
-    speaker: "Ethan Hardy",
-    date: "211005"
-  }, {
-    file_name: "EM100524",
-    title: "test title",
-    series: "this is a series title",
-    url: "https://siasky.net/_A3BzfJhXm2aaPkE9mNQecOPxShKDUdoVHqurZ2ze-kjoA",
-    book: "Galatians",
-    verses: "5:13-18",
-    speaker: "Ethan Hardy",
-    date: "211005"
-  }, ];
+  let sermonData = [];
+  for(let i = 0; i < 50; i++) {
+    sermonData.push({
+      file_name: "EM100521",
+      title: "test title",
+      series: "this is a series title",
+      url: "https://siasky.net/_A3BzfJhXm2aaPkE9mNQecOPxShKDUdoVHqurZ2ze-kjoA",
+      book: "Galatians",
+      verses: "5:13-18",
+      speaker: "Ethan Hardy",
+      date: (211005 + i) + ''
+    })
+  }
 
   return (
     <div className="Sermons bubble">
