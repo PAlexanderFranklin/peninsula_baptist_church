@@ -13,32 +13,3 @@
       border-radius: 0rem;
   }
 }
-
-.sermon_table {
-    border-collapse: collapse;
-    margin: 2rem;
-    min-width: 90%;
-    border-radius: 0.4rem 0.4rem 0 0;
-    overflow: hidden;
-    box-shadow:
-        0px 4px 5px rgba(0, 0, 0, 0.2),
-        0px 3px 14px rgba(0, 0, 0, 0.12),
-        0px 8px 10px rgba(0, 0, 0, 0.14);
-    font-size: 0.9em;
-}
-
-.sermon_table thead tr{
-    background-color: var(--accent-color);
-    font-weight: bold;
-}
-
-.sermon_table tbody tr{
-    background-color: white;
-    border-bottom: 1px solid lightgray;
-}
-
-.sermon_table th,
-.sermon_table td {
-    padding: 0.5rem;
-    padding-left: 1rem;
-}

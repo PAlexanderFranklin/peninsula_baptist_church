@@ -10,16 +10,20 @@ function Row(props) {
     + str[0] + str[1]);
 
   return (
-    <tr className="Row">
-      <td>{title}</td>
-      <td>{series}</td>
-      <td>
+    <div className="Row">
+      <div>
+        <h4>{title}</h4>
+        <p>{series}</p>
+        <p className="number">{passage}</p>
+      </div>
+      <div>
         <audio controls preload="metadata" src={url}>Audio didn't load properly.</audio>
-      </td>
-      <td className="number">{passage}</td>
-      <td>{speaker}</td>
-      <td className="number">{displayDate}</td>
-    </tr>
+      </div>
+      <div>
+        {speaker}
+        <p className="number">{displayDate}</p>
+      </div>
+    </div>
   );
 }
 
