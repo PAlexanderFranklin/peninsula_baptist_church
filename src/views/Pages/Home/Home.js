@@ -38,7 +38,7 @@ function Home() {
         </p>
       </div>
       <div>
-        <h2>Contact</h2>
+        <h2>Contact Us</h2>
         <p>
           Phone: 503-285-5701
         </p>
