@@ -55,8 +55,8 @@ function VaccineStatement(props) {
       </p>
       <p>
         Resolved, that we support the conscience rights of
-        our fellow believers to refuse any vaccines which use
-        fetal cells in development or production, and further be it
+        our members and fellow believers to refuse any vaccines which use
+        fetal cells in development, testing, and/or production, and further be it
       </p>
       <p>
         Resolved, that we call upon the various federal and state
