@@ -12,8 +12,10 @@ function VaccineStatement(props) {
       <p>
         Whereas abortion destroys an innocent human life, and
       </p>
+      <p>
         Whereas fetal cells used in medical experimentation were
         obtained via abortion, and
+      </p>
       <p>
         Whereas the Southern Baptist Convention has condemned
         both abortion (2021) and the use of fetal cells in

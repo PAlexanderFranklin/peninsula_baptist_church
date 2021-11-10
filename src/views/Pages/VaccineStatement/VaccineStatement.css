@@ -1,3 +1,7 @@
 .VaccineStatement {
     font-size: 1.1em;
 }
+
+.VaccineStatement p {
+    max-width: 50rem;
+}
