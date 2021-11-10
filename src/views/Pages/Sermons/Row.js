@@ -3,17 +3,27 @@ import './Row.css';
 
 function Row(props) {
   const {title, series, url, passage, speaker, date} = props;
+
+  let str = date.toString();
+  let displayDate = (str[2] + str[3] + '/'
+    + str[4] + str[5] + '/'
+    + str[0] + str[1]);
+
   return (
-    <tr className="Row">
-      <td>{title}</td>
-      <td>{series}</td>
-      <td>
+    <div className="Row">
+      <div>
+        <h4>{title}</h4>
+        <p>{series}</p>
+        <p className="number">{passage}</p>
+      </div>
+      <div>
         <audio controls preload="metadata" src={url}>Audio didn't load properly.</audio>
-      </td>
-      <td>{passage}</td>
-      <td>{speaker}</td>
-      <td>{date}</td>
-    </tr>
+      </div>
+      <div>
+        {speaker}
+        <p className="number">{displayDate}</p>
+      </div>
+    </div>
   );
 }
 

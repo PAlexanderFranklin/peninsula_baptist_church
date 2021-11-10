@@ -1,0 +1,15 @@
+.Sermons {
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 60rem) {
+  .Sermons {
+      width: 100%;
+      border-radius: 0rem;
+  }
+}

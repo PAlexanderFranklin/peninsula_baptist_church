@@ -11,8 +11,7 @@ function Navbar() {
           <div className="nav_items">
             {/* <Tab link="/sermons">Sermons</Tab>
             <Tab link="/visit">Visit</Tab>
-            <Tab link="/events">Events</Tab>
-            <Tab link="/gallery">Gallery</Tab> */}
+            <Tab link="/events">Events</Tab> */}
             <Tab link="/statement-on-vaccines">Vaccine Statement</Tab>
           </div>
         </ul>
