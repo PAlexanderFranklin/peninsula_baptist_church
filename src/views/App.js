@@ -6,6 +6,7 @@ import Sermons from './Pages/Sermons/Sermons'
 import Visit from './Pages/Visit/Visit'
 import Events from './Pages/Events/Events'
 import Gallery from './Pages/Gallery/Gallery'
+import VaccineStatement from './Pages/VaccineStatement/VaccineStatement'
 import Admin from './Admin/Admin'
 import {Route} from 'react-router-dom'
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/visit" component={Visit} />
         <Route path="/events" component={Events} />
         <Route path="/gallery" component={Gallery} />
+        <Route path="/statement-on-vaccines" component={VaccineStatement} />
         <Route path="/admin" component={Admin} />
       </div>
     </div>
