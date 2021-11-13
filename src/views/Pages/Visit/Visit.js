@@ -23,7 +23,7 @@ function Contact(props) {
       <div>
         <h2>Contact</h2>
         <p>
-          Phone: 503-285-5701
+          Phone: 503-708-5678
         </p>
       </div>
     </div>
