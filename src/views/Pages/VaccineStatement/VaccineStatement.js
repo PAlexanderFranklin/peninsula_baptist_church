@@ -1,6 +1,6 @@
 import React from 'react';
 import './VaccineStatement.css';
-import statementpdf from './PeninsulaBaptistVaccineStatement.pdf';
+// import statementpdf from './PeninsulaBaptistVaccineStatement.pdf';
 
 function VaccineStatement(props) {
   return (
@@ -16,7 +16,13 @@ function VaccineStatement(props) {
         Scripture to not violate their own consciences.
       </p>
       <p>
-        This statement is also available as a <a href={statementpdf}>pdf</a>.
+        This statement is also available as a <a
+          href="https://siasky.net/bABe9dNJvBNUM5uWmGjXdzn2txyjmojPBbmiUhmJymizUg"
+          target="_blank"
+          rel="noopener noreferrer"
+          >
+            pdf
+        </a>
       </p>
       <h2>Statement</h2>
       <p>
