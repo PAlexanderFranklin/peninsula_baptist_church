@@ -5,3 +5,7 @@
 .VaccineStatement p {
     max-width: 50rem;
 }
+
+.bold_vaccine {
+    font-weight: bold;
+}
