@@ -1,19 +1,22 @@
 import React from 'react';
 import './VaccineStatement.css';
+import statementpdf from './PeninsulaBaptistVaccineStatement.pdf';
 
 function VaccineStatement(props) {
   return (
     <div className="VaccineStatement bubble">
       <h2>Introduction</h2>
       <p>
-        The following is Peninsula Baptist's Statement concerning Christian
-        freedom of conscience regarding vaccines. We've adopted
-        this Statement in order to set forth the case that there
-        are legitimate spiritual reasons to decline these
-        medications for any whose conscience or understanding of Holy
-        Scripture should so lead them. We do not hold the position
-        that all Christians are obligated to abstain from
-        receiving either the Covid 19 or any other vaccinations.
+        The following is Peninsula Baptist's Statement concerning Christian freedom of
+        conscience regarding vaccines. We've adopted this Statement in order to set forth the
+        case that there are legitimate spiritual reasons to decline these medications for any
+        whose conscience or understanding of Holy Scripture should so lead them. We do not
+        hold the position that all Christians are obligated to abstain from receiving either the
+        Covid 19 or any other vaccinations, but we do hold that the same are obligated by
+        Scripture to not violate their own consciences.
+      </p>
+      <p>
+        This statement is also available as a <a href={statementpdf}>pdf</a>.
       </p>
       <h2>Statement</h2>
       <p>
