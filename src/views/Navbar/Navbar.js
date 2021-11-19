@@ -7,7 +7,7 @@ function Navbar() {
     <header className="header">
       <nav className="Navbar">
         <ul>
-          <Tab link="/" exact="true" className="home_name">Peninsula Baptist Church</Tab>
+          <Tab link="/" exact={true} className="home_name">Peninsula Baptist Church</Tab>
           <div className="nav_items">
             {/* <Tab link="/sermons">Sermons</Tab>
             <Tab link="/visit">Visit</Tab>
