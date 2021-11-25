@@ -8,7 +8,7 @@ import Events from './Pages/Events/Events'
 import Gallery from './Pages/Gallery/Gallery'
 import VaccineStatement from './Pages/VaccineStatement/VaccineStatement'
 import Admin from './Admin/Admin'
-import {Route} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { SkynetProvider } from '../state/SkynetContext';
 
 function App() {

@@ -15,7 +15,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
-    "skynet-js": "^4.0.18-beta"
+    "skynet-js": "^4.0.18-beta",
+    "sql.js": "^1.6.2"
   },
   "scripts": {
     "start": "react-scripts start",
