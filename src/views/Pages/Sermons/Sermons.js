@@ -63,8 +63,8 @@ function Sermons() {
 
   // Example Data
   useEffect(() => {
+    let sampleSermonData = [];
     for (let i = 0; i < 50; i++) {
-      let sampleSermonData = [];
       sampleSermonData.push({
         file_name: "EM100521",
         title: "test title",
