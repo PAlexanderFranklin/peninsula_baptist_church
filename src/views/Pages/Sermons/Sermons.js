@@ -1,30 +1,65 @@
-import React, { useEffect, useState } from 'react';
-// useContext,
-// import initSqlJs from 'sql.js';
+import React, { useContext, useEffect, useState } from 'react';
+import initSqlJs from 'sql.js';
+
+// Required to let webpack 4 know it needs to copy the wasm file to our assets
+import sqlWasm from "!!file-loader?name=sql-wasm-[contenthash].wasm!sql.js/dist/sql-wasm.wasm";
+
 import './Sermons.css';
 import Row from "./Row";
-// import { SkynetContext } from '../../../state/SkynetContext';
+import { SkynetContext } from '../../../state/SkynetContext';
 
 // metadatadb: https://siasky.net/DABchy1Q3tBUggIP9IF_7ha9vAfBZ1d2aYRxUnHSQg9QNA
 
 function Sermons() {
 
-  // const client = useContext(SkynetContext);
-  // const [ dataBase, setDataBase ] = useState();
+  const client = useContext(SkynetContext);
+  const [dataBaseFile, setDataBaseFile] = useState(null);
+  const [db, setDb] = useState(null);
   const [ sermonData, setSermonData ] = useState([]);
 
-  // useEffect(() => {
-  //   async function getDatabase() {
-  //     try {
-  //       const response = await client.getFileContent("DABchy1Q3tBUggIP9IF_7ha9vAfBZ1d2aYRxUnHSQg9QNA");
-  //       console.log(response)
-  //       setDataBase(response.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   getDatabase();
-  // }, [client]);
+  useEffect(() => {
+    async function getDatabase() {
+      try {
+        const response = await client.getFileContent("DABchy1Q3tBUggIP9IF_7ha9vAfBZ1d2aYRxUnHSQg9QNA");
+        setDataBaseFile(response.data);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getDatabase();
+  }, [client]);
+
+  useEffect(() => {
+      async function initDB() {
+        // sql.js needs to fetch its wasm file, so we cannot immediately instantiate the database
+        // without any configuration, initSqlJs will fetch the wasm files directly from the same path as the js
+        // see ../craco.config.js
+        try {
+          if (dataBaseFile) {
+            const SQL = await initSqlJs({ locateFile: () => sqlWasm });
+            setDb(new SQL.Database(dataBaseFile));
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      initDB();
+  }, [dataBaseFile]);
+
+  useEffect(() => {
+      async function runQuery() {
+        try {
+          if (db) {
+            const response = db.exec("SELECT * FROM audio");
+            console.log(response);
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      runQuery();
+  }, [db]);
 
   // Example Data
   useEffect(() => {
