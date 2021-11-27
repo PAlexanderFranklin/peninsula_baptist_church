@@ -83,6 +83,17 @@ function Sermons() {
                 LEFT JOIN speakers ON speakers.id = audio.speaker_id
             `);
             console.log(response);
+            const columns = response[0].columns;
+            const values = response[0].values;
+            let rows = [];
+            values.forEach(element => {
+              let row = {};
+              for (let i = 0; i < columns.length; i++) {
+                row[columns[i]] = element[i];
+              }
+              rows.push(row);
+            });
+            setSermonData(rows);
           }
         } catch (err) {
           console.log(err);
@@ -92,22 +103,22 @@ function Sermons() {
   }, [db]);
 
   // Example Data
-  useEffect(() => {
-    let sampleSermonData = [];
-    for (let i = 0; i < 50; i++) {
-      sampleSermonData.push({
-        file_name: "EM1005" + i,
-        title: "test title",
-        series: "this is a series title",
-        url: "https://siasky.net/_A3BzfJhXm2aaPkE9mNQecOPxShKDUdoVHqurZ2ze-kjoA",
-        book: "Galatians",
-        verses: "5:13-18",
-        speaker: "Ethan Hardy",
-        date: (211005 + i) + ''
-      })
-      setSermonData(sampleSermonData);
-    }
-  }, [setSermonData]);
+  // useEffect(() => {
+  //   let sampleSermonData = [];
+  //   for (let i = 0; i < 50; i++) {
+  //     sampleSermonData.push({
+  //       file_name: "EM1005" + i,
+  //       title: "test title",
+  //       series: "this is a series title",
+  //       url: "https://siasky.net/_A3BzfJhXm2aaPkE9mNQecOPxShKDUdoVHqurZ2ze-kjoA",
+  //       book: "Galatians",
+  //       verses: "5:13-18",
+  //       speaker: "Ethan Hardy",
+  //       date: (211005 + i) + ''
+  //     })
+  //     setSermonData(sampleSermonData);
+  //   }
+  // }, [setSermonData]);
 
   return (
     <div className="Sermons bubble">
@@ -116,8 +127,8 @@ function Sermons() {
           key={element.file_name}
           title={element.title}
           series={element.series}
-          url={element.url}
-          passage={element.book + " " + element.verses}
+          skylink={element.skylink}
+          passage={element.book + " " + element.verse}
           speaker={element.speaker}
           date={element.date}/>
       )}

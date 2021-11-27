@@ -2,7 +2,7 @@ import React from 'react';
 import './Row.css';
 
 function Row(props) {
-  const {title, series, url, passage, speaker, date} = props;
+  const {title, series, skylink, passage, speaker, date} = props;
 
   let str = date.toString();
   let displayDate = (str[2] + str[3] + '/'
@@ -17,7 +17,7 @@ function Row(props) {
         <p className="number">{passage}</p>
       </div>
       <div>
-        <audio controls preload="metadata" src={url}>Audio didn't load properly.</audio>
+        {/* <audio controls preload="metadata" src={url}>Audio didn't load properly.</audio> */}
       </div>
       <div>
         {speaker}
