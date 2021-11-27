@@ -82,7 +82,6 @@ function Sermons() {
                 LEFT JOIN series ON series.id = audio.series_id
                 LEFT JOIN speakers ON speakers.id = audio.speaker_id
             `);
-            console.log(response);
             const columns = response[0].columns;
             const values = response[0].values;
             let rows = [];
@@ -101,24 +100,6 @@ function Sermons() {
       }
       runQuery();
   }, [db]);
-
-  // Example Data
-  // useEffect(() => {
-  //   let sampleSermonData = [];
-  //   for (let i = 0; i < 50; i++) {
-  //     sampleSermonData.push({
-  //       file_name: "EM1005" + i,
-  //       title: "test title",
-  //       series: "this is a series title",
-  //       url: "https://siasky.net/_A3BzfJhXm2aaPkE9mNQecOPxShKDUdoVHqurZ2ze-kjoA",
-  //       book: "Galatians",
-  //       verses: "5:13-18",
-  //       speaker: "Ethan Hardy",
-  //       date: (211005 + i) + ''
-  //     })
-  //     setSermonData(sampleSermonData);
-  //   }
-  // }, [setSermonData]);
 
   return (
     <div className="Sermons bubble">
