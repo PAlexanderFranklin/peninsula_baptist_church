@@ -13,7 +13,7 @@ import Row from "./Row";
 function Sermons() {
 
   // const client = useContext(SkynetContext);
-  // const [ dataBaseFile, setDataBaseFile ] = useState(null);
+  const [ dataBaseFile, setDataBaseFile ] = useState(null);
   const [ db, setDb ] = useState(null);
   const [ sermonData, setSermonData ] = useState([]);
 
