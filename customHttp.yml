@@ -3,3 +3,9 @@ customHeaders:
     headers:
       - key: 'Content-Type'
         value: 'application/wasm'
+      - key: 'Access-Control-Allow-Origin'
+        value: '*'
+  - pattern: '*manifest.json'
+    headers:
+      - key: 'Access-Control-Allow-Origin'
+        value: '*'
