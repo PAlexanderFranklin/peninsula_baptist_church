@@ -5,3 +5,7 @@ customHeaders:
         value: '*'
       - key: 'Content-Type'
         value: 'application/wasm'
+  - pattern: '**/*'
+    headers:
+      - key: 'Access-Control-Allow-Origin'
+        value: '*'
