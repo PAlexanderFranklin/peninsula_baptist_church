@@ -3,7 +3,7 @@ customHeaders:
     headers:
       - key: 'Access-Control-Allow-Origin'
         value: '*'
-  - pattern: '/*.wasm'
+  - pattern: '*.wasm'
     headers:
       - key: 'Access-Control-Allow-Origin'
         value: '*'
