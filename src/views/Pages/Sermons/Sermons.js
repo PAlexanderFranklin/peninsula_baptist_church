@@ -33,7 +33,7 @@ function Sermons() {
   useEffect(() => {
     async function getDatabase() {
       try {
-        const SQL = await initSqlJs({ locateFile: () => sqlWasm });
+        const SQL = await initSqlJs({ locateFile: () => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-wasm.wasm` });
         const dataPromise = fetch("https://siasky.net/DABchy1Q3tBUggIP9IF_7ha9vAfBZ1d2aYRxUnHSQg9QNA").then(res => res.arrayBuffer());
         const buf = await Promise.resolve(dataPromise)
         setDb(new SQL.Database(new Uint8Array(buf)));
