@@ -7,9 +7,6 @@ function Home() {
       <h2>Welcome to our church!</h2>
       <p>We are a Southern Baptist Church in Portland, Oregon.</p>
       <p>We meet each Sunday and Wednesday. Our services are traditional and family-friendly.</p>
-      <p>Our Statement of Faith is
-         the <a href="http://www.sbc.net/bfm2000/bfm2000.asp">Baptist Faith and Message.</a>
-      </p>
       <p>Feel free to look at our service times and come visit us next Sunday!</p>
       <p>
         Find us on:

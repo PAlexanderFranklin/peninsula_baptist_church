@@ -1,9 +1,24 @@
 .Row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
   align-items: center;
   width: 100%;
   padding: 1rem 2rem;
   border-top: 2px solid lightgray;
+}
+
+.Row audio {
+  margin-left: 5rem;
+}
+
+.id_data {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 20rem;
+  margin-left: 5rem;
+}
+
+.speaker {
+  margin-left: 5rem;
 }

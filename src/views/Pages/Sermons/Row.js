@@ -27,7 +27,7 @@ function Row(props) {
 
   return (
     <div className="Row">
-      <div>
+      <div className="id_data">
         <h4>{title}</h4>
         <p>{series}</p>
         <p className="number">{passage}</p>
@@ -35,7 +35,7 @@ function Row(props) {
       <div>
         <audio controls preload="metadata" src={audioURL}>Audio didn't load properly.</audio>
       </div>
-      <div>
+      <div className="speaker">
         {speaker}
         <p className="number">{displayDate}</p>
       </div>
