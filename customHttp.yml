@@ -1,0 +1,5 @@
+customHeaders:
+  - pattern: '*.wasm'
+    headers:
+      - key: 'Content-Type'
+        value: 'application/wasm'
