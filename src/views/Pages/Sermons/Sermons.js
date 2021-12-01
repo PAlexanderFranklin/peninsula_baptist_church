@@ -81,6 +81,7 @@ function Sermons() {
                 LEFT JOIN books ON books.id = audio.book_id
                 LEFT JOIN series ON series.id = audio.series_id
                 LEFT JOIN speakers ON speakers.id = audio.speaker_id
+              ORDER BY date DESC;
             `);
             const columns = response[0].columns;
             const values = response[0].values;
