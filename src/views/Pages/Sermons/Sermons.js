@@ -15,7 +15,8 @@ function Sermons() {
   // const client = useContext(SkynetContext);
   // const [ dataBaseFile, setDataBaseFile ] = useState(null);
   const [ db, setDb ] = useState(null);
-  const [ sermonData, setSermonData ] = useState([]);
+  const [ sermonData, setSermonData ] = useState(null);
+  const [ errorState, setErrorState ] = useState(null);
 
   // useEffect(() => {
   //   async function getDatabase() {
@@ -29,20 +30,6 @@ function Sermons() {
   //   }
   //   getDatabase();
   // }, [client]);
-
-  useEffect(() => {
-    async function getDatabase() {
-      try {
-        const SQL = await initSqlJs({ locateFile: () => sqlWasm });
-        const dataPromise = fetch("https://siasky.net/DABchy1Q3tBUggIP9IF_7ha9vAfBZ1d2aYRxUnHSQg9QNA").then(res => res.arrayBuffer());
-        const buf = await Promise.resolve(dataPromise)
-        setDb(new SQL.Database(new Uint8Array(buf)));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getDatabase();
-  }, []);
 
   // useEffect(() => {
   //     async function initDB() {
@@ -60,6 +47,21 @@ function Sermons() {
   //     }
   //     initDB();
   // }, [dataBaseFile]);
+
+  useEffect(() => {
+    async function getDatabase() {
+      try {
+        const SQL = await initSqlJs({ locateFile: () => sqlWasm });
+        const dataPromise = fetch("https://siasky.net/DABchy1Q3tBUggIP9IF_7ha9vAfBZ1d2aYRxUnHSQg9QNA").then(res => res.arrayBuffer());
+        const buf = await Promise.resolve(dataPromise)
+        setDb(new SQL.Database(new Uint8Array(buf)));
+      } catch (error) {
+        console.log(error);
+        setErrorState("Failed to load Database. Try refreshing the page.");
+      }
+    }
+    getDatabase();
+  }, []);
 
   useEffect(() => {
       async function runQuery() {
@@ -97,6 +99,7 @@ function Sermons() {
           }
         } catch (err) {
           console.log(err);
+          setErrorState("Failed to load sermons. Try refreshing the page.");
         }
       }
       runQuery();
@@ -104,16 +107,19 @@ function Sermons() {
 
   return (
     <div className="Sermons bubble">
-      {sermonData.map(element => 
-        <Row
-          key={element.file_name}
-          title={element.title}
-          series={element.series}
-          skylink={element.skylink}
-          passage={element.book + " " + element.verse}
-          speaker={element.speaker}
-          date={element.date}/>
-      )}
+      { sermonData ?
+        sermonData.map(element => 
+          <Row
+            key={element.file_name}
+            title={element.title}
+            series={element.series}
+            skylink={element.skylink}
+            passage={element.book + " " + element.verse}
+            speaker={element.speaker}
+            date={element.date}/>
+        )
+        : <div>{errorState ? errorState : "Loading..."}</div>
+      }
     </div>
   );
 }
