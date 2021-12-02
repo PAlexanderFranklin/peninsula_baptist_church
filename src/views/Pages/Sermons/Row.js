@@ -6,17 +6,21 @@ function Row(props) {
 
   const {title, series, skylink, passage, speaker, date} = props;
   const client = useContext(SkynetContext);
+  const [ fetchError, setFetchError ] = useState(null);
 
   const [ audioURL, setAudioURL ] = useState(null);
 
-  useEffect(() => {
-    async function getAudio() {
-      try {
-        setAudioURL(await client.getSkylinkUrl(skylink));
-      } catch (error) {
-        console.log(error);
-      }
+  async function getAudio() {
+    try {
+      setAudioURL(await client.getSkylinkUrl(skylink));
+      setFetchError(null);
+    } catch (error) {
+      console.log(error);
+      setFetchError("Failed to load sermon.");
     }
+  }
+
+  useEffect(() => {
     getAudio();
   }, [skylink])
 
@@ -32,8 +36,11 @@ function Row(props) {
         <p>{series}</p>
         <p className="number">{passage}</p>
       </div>
-      <div>
-        <audio controls preload="metadata" src={audioURL}>Audio didn't load properly.</audio>
+      <div className="audio_container">
+        { fetchError ? 
+         <div>{fetchError} <button onClick={getAudio} className="retry_button">Retry</button></div> :
+          <audio controls preload="metadata" src={audioURL}>Audio didn't load properly.</audio>
+        }
       </div>
       <div className="speaker">
         {speaker}

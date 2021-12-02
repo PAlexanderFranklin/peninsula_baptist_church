@@ -7,8 +7,9 @@
   border-top: 2px solid lightgray;
 }
 
-.Row audio {
+.audio_container {
   margin-left: 5rem;
+  width: 20rem;
 }
 
 .id_data {
