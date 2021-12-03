@@ -7,6 +7,15 @@
     font-size: 1.2rem;
 }
 
+.error_container {
+  margin-top: 5rem;
+}
+
+.retry_button {
+  margin-left: 1.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
 @media (max-width: 60rem) {
   .Sermons {
       width: 100%;

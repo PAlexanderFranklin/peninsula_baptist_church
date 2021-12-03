@@ -6,62 +6,53 @@ import sqlWasm from "!!file-loader?name=sql-wasm-[contenthash].wasm!sql.js/dist/
 
 import './Sermons.css';
 import Row from "./Row";
-// import { SkynetContext } from '../../../state/SkynetContext';
+import { SkynetContext } from '../../../state/SkynetContext';
 
 // metadatadb: https://siasky.net/DABchy1Q3tBUggIP9IF_7ha9vAfBZ1d2aYRxUnHSQg9QNA
 
 function Sermons() {
 
-  // const client = useContext(SkynetContext);
-  // const [ dataBaseFile, setDataBaseFile ] = useState(null);
+  const client = useContext(SkynetContext);
+  const [ dataBaseFile, setDataBaseFile ] = useState(null);
   const [ db, setDb ] = useState(null);
   const [ sermonData, setSermonData ] = useState(null);
   const [ errorState, setErrorState ] = useState(null);
-
-  // useEffect(() => {
-  //   async function getDatabase() {
-  //     try {
-  //       const response = await client.getFileContent("DABchy1Q3tBUggIP9IF_7ha9vAfBZ1d2aYRxUnHSQg9QNA");
-  //       console.log(response.data);
-  //       setDataBaseFile(response.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   getDatabase();
-  // }, [client]);
-
-  // useEffect(() => {
-  //     async function initDB() {
-  //       // sql.js needs to fetch its wasm file, so we cannot immediately instantiate the database
-  //       // without any configuration, initSqlJs will fetch the wasm files directly from the same path as the js
-  //       // see ../craco.config.js
-  //       try {
-  //         if (dataBaseFile) {
-  //           const SQL = await initSqlJs({ locateFile: () => sqlWasm });
-  //           setDb(new SQL.Database(dataBaseFile));
-  //         }
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     }
-  //     initDB();
-  // }, [dataBaseFile]);
+  
+  async function getDatabase() {
+    try {
+      const response = await client.getFileContent(
+        "DABchy1Q3tBUggIP9IF_7ha9vAfBZ1d2aYRxUnHSQg9QNA",
+        { responseType: "arraybuffer" }
+      );
+      setDataBaseFile(response.data);
+    } catch (error) {
+      console.log(error);
+      setErrorState("Failed to load Database.");
+    }
+  }
 
   useEffect(() => {
-    async function getDatabase() {
-      try {
-        const SQL = await initSqlJs({ locateFile: () => sqlWasm });
-        const dataPromise = fetch("https://siasky.net/DABchy1Q3tBUggIP9IF_7ha9vAfBZ1d2aYRxUnHSQg9QNA").then(res => res.arrayBuffer());
-        const buf = await Promise.resolve(dataPromise)
-        setDb(new SQL.Database(new Uint8Array(buf)));
-      } catch (error) {
-        console.log(error);
-        setErrorState("Failed to load Database. Try refreshing the page.");
-      }
-    }
     getDatabase();
-  }, []);
+  }, [client]);
+  
+  async function initDB() {
+    // sql.js needs to fetch its wasm file, so we cannot immediately instantiate the database
+    // without any configuration, initSqlJs will fetch the wasm files directly from the same path as the js
+    // see ../craco.config.js
+    try {
+      if (dataBaseFile) {
+        const SQL = await initSqlJs({ locateFile: () => sqlWasm });
+        setDb(new SQL.Database(new Uint8Array(dataBaseFile)));
+      }
+    } catch (err) {
+      console.log(err);
+      setErrorState("Failed to load Database.");
+    }
+  }
+
+  useEffect(() => {
+      initDB();
+  }, [dataBaseFile]);
 
   useEffect(() => {
       async function runQuery() {
@@ -99,7 +90,7 @@ function Sermons() {
           }
         } catch (err) {
           console.log(err);
-          setErrorState("Failed to load sermons. Try refreshing the page.");
+          setErrorState("Failed to load sermons.");
         }
       }
       runQuery();
@@ -118,7 +109,13 @@ function Sermons() {
             speaker={element.speaker}
             date={element.date}/>
         )
-        : <div>{errorState ? errorState : "Loading..."}</div>
+        : <div>{errorState ?
+          <div className="error_container">
+            {errorState}
+            <button onClick={getDatabase} className="retry_button">Retry</button>
+          </div> :
+            "Loading..."}
+          </div>
       }
     </div>
   );
