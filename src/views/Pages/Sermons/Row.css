@@ -3,11 +3,14 @@
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  padding: 1rem 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   border-top: 2px solid lightgray;
 }
 
 .audio_container {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   margin-left: 5rem;
   width: 20rem;
 }
