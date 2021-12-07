@@ -1,8 +1,4 @@
 customHeaders:
-  - pattern: '**/*'
-    headers:
-      - key: Access-Control-Allow-Origin
-        value: '*'
   - pattern: '*.wasm'
     headers:
       - key: Access-Control-Allow-Origin
