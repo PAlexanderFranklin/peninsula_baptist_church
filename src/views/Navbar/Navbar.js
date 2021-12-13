@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
-import Tab from './Tab/Tab'
+import Tab from './Tab/Tab';
+// import { GiHamburgerMenu } from 'react-icons/gi';
 
 function Navbar() {
+
+  const [ menuClass, setMenuClass ] = useState(" hidden");
+
   return (
     <header className="header">
       <nav className="Navbar">
         <ul>
           <Tab link="/" exact={true} className="home_name">Peninsula Baptist Church</Tab>
-          <div className="nav_items">
+          {/* <button className='hamburger_button' onClick={() => {if (menuClass) {setMenuClass("")} else {setMenuClass(" hidden")}}}>
+            <GiHamburgerMenu className='hamburger' />
+          </button> */}
+          <div className={"nav_items" + menuClass}>
             {/* <Tab link="/sermons">Sermons</Tab> */}
             <li className="Tab">
               <a href="http://www.sbc.net/bfm2000/bfm2000.asp" target="_blank">Statement Of Faith</a>

@@ -27,6 +27,23 @@
     padding: 0;
 }
 
+.hamburger_button {
+    background-color: rgba(0, 0, 0, 0);
+    width: 3rem;
+    height: 3rem;
+    border: none;
+}
+
+.hamburger {
+    color: white;
+    width: 2rem;
+    height: 2rem;
+}
+
+/* .hidden {
+    display: none;
+} */
+
 .home_name {
     font-size: 1.5rem;
     padding-right: 10rem;
