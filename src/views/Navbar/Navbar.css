@@ -3,7 +3,6 @@
 }
 
 .Navbar {
-    position: fixed;
     z-index: 10;
     width: 100%;
     top: 0;
@@ -35,7 +34,7 @@
 
 .nav_items {
     display: flex;
-    flex-flow: row;
+    flex-flow: row wrap;
     justify-content: space-around;
     align-content: center;
     flex-grow: .5;
