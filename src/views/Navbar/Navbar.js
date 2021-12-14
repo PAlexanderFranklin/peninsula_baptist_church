@@ -16,7 +16,7 @@ function Navbar() {
             <GiHamburgerMenu className='hamburger' />
           </button> */}
           <div className={"nav_items" + menuClass}>
-            {/* <Tab link="/sermons">Sermons</Tab> */}
+            <Tab link="/sermons">Sermons</Tab>
             <li className="Tab">
               <a href="http://www.sbc.net/bfm2000/bfm2000.asp" target="_blank">Statement Of Faith</a>
             </li>
