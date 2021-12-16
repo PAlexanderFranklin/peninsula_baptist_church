@@ -8,8 +8,6 @@ import './Sermons.css';
 import Row from "./Row";
 import { SkynetContext } from '../../../state/SkynetContext';
 
-// metadatadb: https://siasky.net/DABchy1Q3tBUggIP9IF_7ha9vAfBZ1d2aYRxUnHSQg9QNA
-
 function Sermons() {
 
   const client = useContext(SkynetContext);
@@ -21,7 +19,7 @@ function Sermons() {
   async function getDatabase() {
     try {
       const response = await client.getFileContent(
-        "DAAxeZ5z-WQEvw3rlpdaDmu096ujaILP7kfwPygsmOOmJg",
+        "DABItAEH24V4F9d2NCFveNP800LEub-2N691gkymJm_fnw",
         { responseType: "arraybuffer" }
       );
       setDataBaseFile(response.data);
