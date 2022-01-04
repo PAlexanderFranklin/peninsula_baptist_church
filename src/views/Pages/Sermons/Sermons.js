@@ -15,6 +15,15 @@ function Sermons() {
   const [ db, setDb ] = useState(null);
   const [ sermonData, setSermonData ] = useState(null);
   const [ errorState, setErrorState ] = useState(null);
+  const [ queryFilter, setQueryFilter ] = useState(
+    {
+      title: ``,
+      book: ``,
+      series: ``,
+      speaker: ``,
+      sort: `date DESC`,
+    }
+  );
   
   async function getDatabase() {
     try {
@@ -53,62 +62,70 @@ function Sermons() {
   }, [dataBaseFile]);
 
   useEffect(() => {
-      async function runQuery() {
-        try {
-          if (db) {
-            const response = db.exec(`
-              SELECT
-                file_name,
-                title,
-                books.name AS book,
-                verse,
-                series.name AS series,
-                speakers.name AS speaker,
-                date,
-                skylink,
-                notes
-              FROM
-                audio
-                LEFT JOIN books ON books.id = audio.book_id
-                LEFT JOIN series ON series.id = audio.series_id
-                LEFT JOIN speakers ON speakers.id = audio.speaker_id
-              WHERE
-                skylink IS NOT NULL
-              ORDER BY date DESC;
-            `);
-            const columns = response[0].columns;
-            const values = response[0].values;
-            let rows = [];
-            values.forEach(element => {
-              let row = {};
-              for (let i = 0; i < columns.length; i++) {
-                row[columns[i]] = element[i];
-              }
-              rows.push(row);
-            });
-            setSermonData(rows);
-          }
-        } catch (err) {
-          console.log(err);
-          setErrorState("Failed to load sermons.");
+    async function runQuery() {
+      try {
+        if (db) {
+          const response = db.exec(`
+            SELECT
+              file_name,
+              title,
+              books.name AS book,
+              verse,
+              series.name AS series,
+              speakers.name AS speaker,
+              date,
+              skylink,
+              notes
+            FROM
+              audio
+              LEFT JOIN books ON books.id = audio.book_id
+              LEFT JOIN series ON series.id = audio.series_id
+              LEFT JOIN speakers ON speakers.id = audio.speaker_id
+            WHERE
+              skylink IS NOT NULL
+              ${queryFilter.title}
+              ${queryFilter.book}
+              ${queryFilter.series}
+              ${queryFilter.speaker}
+            ORDER BY ${queryFilter.sort};
+          `);
+          const columns = response[0].columns;
+          const values = response[0].values;
+          let rows = [];
+          values.forEach(element => {
+            let row = {};
+            for (let i = 0; i < columns.length; i++) {
+              row[columns[i]] = element[i];
+            }
+            rows.push(row);
+          });
+          setSermonData(rows);
         }
+      } catch (err) {
+        console.log(err);
+        setErrorState("Failed to load sermons.");
       }
-      runQuery();
-  }, [db]);
+    }
+    runQuery();
+  }, [db, queryFilter]);
 
   return (
     <div className="Sermons bubble">
       { sermonData ?
-        sermonData.map(element => 
-          <Row
-            key={element.file_name}
-            title={element.title}
-            series={element.series}
-            skylink={element.skylink}
-            passage={element.book + " " + element.verse}
-            speaker={element.speaker}
-            date={element.date}/>
-        )
+        [
+          <div className='sermons_options'>
+          </div>,
+          sermonData.map(element => 
+            <Row
+              key={element.file_name}
+              title={element.title}
+              series={element.series}
+              skylink={element.skylink}
+              passage={element.book + " " + element.verse}
+              speaker={element.speaker}
+              date={element.date}/>
+          )
+        ]
         : <div>{errorState ?
           <div className="error_container">
             {errorState}
