@@ -1,0 +1,17 @@
+.PageNumbers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: 2px solid lightgray;
+}
+
+.page_button {
+  background-color: grey;
+}
+
+.active_page_button {
+  background-color: green;
+}
