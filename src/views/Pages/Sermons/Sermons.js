@@ -109,6 +109,46 @@ function Sermons() {
     runQuery();
   }, [db, queryFilter]);
 
+  // useEffect(() => {
+  //   async function getRowCount() {
+  //     try {
+  //       if (db) {
+  //         const response = db.exec(`
+  //           SELECT
+  //             COUNT(skylink) AS row_count
+  //           FROM
+  //             audio
+  //             LEFT JOIN books ON books.id = audio.book_id
+  //             LEFT JOIN series ON series.id = audio.series_id
+  //             LEFT JOIN speakers ON speakers.id = audio.speaker_id
+  //           WHERE
+  //             skylink IS NOT NULL
+  //             ${queryFilter.title}
+  //             ${queryFilter.book}
+  //             ${queryFilter.series}
+  //             ${queryFilter.speaker}
+  //           ORDER BY ${queryFilter.sort};
+  //         `);
+  //         const columns = response[0].columns;
+  //         const values = response[0].values;
+  //         let rows = [];
+  //         values.forEach(element => {
+  //           let row = {};
+  //           for (let i = 0; i < columns.length; i++) {
+  //             row[columns[i]] = element[i];
+  //           }
+  //           rows.push(row);
+  //         });
+  //         setSermonData(rows);
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //       setErrorState("Failed to load sermons.");
+  //     }
+  //   }
+  //   getRowCount();
+  // }, [db, queryFilter]);
+
   return (
     <div className="Sermons bubble">
       { sermonData ?
