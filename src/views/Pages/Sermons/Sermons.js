@@ -28,8 +28,8 @@ function Sermons() {
   const [ queryOptions, setQueryOptions ] = useState(
     {
       sort: `date DESC`,
-      page: `1`,
-      rowsPerPage: `10`,
+      page: 1,
+      rowsPerPage: 3,
     }
   );
   
@@ -151,7 +151,7 @@ function Sermons() {
       { sermonData ?
         [
           <div className='sermons_options'>
-            {rowCount}
+            Query Option selection
           </div>,
           <PageNumbers
             rowCount={rowCount}
