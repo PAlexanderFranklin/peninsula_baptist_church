@@ -1,9 +1,87 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './QueryFilterPanel.css';
 
 function QueryFilterPanel(props) {
 
-  const { queryFilter, setQueryFilter, queryOptions, setQueryOptions } = props;
+  const { db, queryFilter, setQueryFilter, queryOptions, setQueryOptions } = props;
+  const [ speakers, setSpeakers ] = useState(null);
+  const [ books, setBooks ] = useState(null);
+  const [ series, setSeries ] = useState(null);
+
+  useEffect(() => {
+    async function runQuery() {
+      try {
+        if (db) {
+          const response = db.exec(`
+            SELECT
+              name
+            FROM
+              speakers
+            ORDER BY name ASC;
+          `);
+          const values = response[0].values;
+          let names = [];
+          values.forEach(element => {
+            names.push(element[0]);
+          });
+          setSpeakers(names);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    runQuery();
+  }, [db]);
+
+  useEffect(() => {
+    async function runQuery() {
+      try {
+        if (db) {
+          const response = db.exec(`
+            SELECT
+              name
+            FROM
+              books
+            ORDER BY name ASC;
+          `);
+          const values = response[0].values;
+          let names = [];
+          values.forEach(element => {
+            names.push(element[0]);
+          });
+          setBooks(names);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    runQuery();
+  }, [db]);
+
+  useEffect(() => {
+    async function runQuery() {
+      try {
+        if (db) {
+          const response = db.exec(`
+            SELECT
+              name
+            FROM
+              series
+            ORDER BY name ASC;
+          `);
+          const values = response[0].values;
+          let names = [];
+          values.forEach(element => {
+            names.push(element[0]);
+          });
+          setSeries(names);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    runQuery();
+  }, [db]);
 
   return (
     <div className="QueryFilterPanel">
