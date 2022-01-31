@@ -12,6 +12,8 @@
   width: 3rem;
   font-size: 1.25rem;
   background-color: rgb(255, 255, 255);
+  border-radius: 0.4rem;
+  border-color: lightgrey;
 }
 
 .active_page_button {
