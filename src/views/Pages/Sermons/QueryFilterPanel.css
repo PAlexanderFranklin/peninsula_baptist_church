@@ -1,0 +1,7 @@
+.QueryFilterPanel {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}

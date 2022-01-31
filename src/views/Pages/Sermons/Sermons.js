@@ -6,6 +6,7 @@ import sqlWasm from "!!file-loader?name=sql-wasm-[contenthash].wasm!sql.js/dist/
 
 import './Sermons.css';
 import PageNumbers from "./PageNumbers";
+import QueryFilterPanel from './QueryFilterPanel';
 import Row from "./Row";
 import { SkynetContext } from '../../../state/SkynetContext';
 
@@ -150,9 +151,12 @@ function Sermons() {
     <div className="Sermons bubble">
       { sermonData ?
         [
-          <div className='sermons_options'>
-            Query Option selection
-          </div>,
+          <QueryFilterPanel
+            queryFilter={queryFilter}
+            setQueryFilter={setQueryFilter}
+            queryOptions={queryOptions}
+            setQueryOptions={setQueryOptions}
+          />,
           <PageNumbers
             rowCount={rowCount}
             queryOptions={queryOptions}
