@@ -5,7 +5,7 @@ function PageNumbers(props) {
 
   const { rowCount, queryOptions, setQueryOptions } = props;
 
-  let pageCount = Math.ceil(rowCount / 10);
+  let pageCount = Math.ceil(rowCount / queryOptions.rowsPerPage);
   let pageButtons = [];
 
   for (let i = 1; i <= pageCount; i++) {
