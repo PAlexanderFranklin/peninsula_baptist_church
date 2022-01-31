@@ -15,6 +15,7 @@ function PageNumbers(props) {
     }
     pageButtons.push(
     <button
+      key={"button" + i}
       className={classNames}
       onClick={() => {setQueryOptions({...queryOptions, page: i})}}
     >

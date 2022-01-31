@@ -20,17 +20,17 @@ function Sermons() {
   const [ rowCount, setRowCount ] = useState(0);
   const [ queryFilter, setQueryFilter ] = useState(
     {
-      title: ``,
-      book: ``,
-      series: ``,
-      speaker: ``,
+      titleFilter: ``,
+      bookFilter: ``,
+      seriesFilter: ``,
+      speakerFilter: ``,
     }
   );
   const [ queryOptions, setQueryOptions ] = useState(
     {
       sort: `date DESC`,
       page: 1,
-      rowsPerPage: 3,
+      rowsPerPage: 5,
     }
   );
   
@@ -92,10 +92,10 @@ function Sermons() {
               LEFT JOIN speakers ON speakers.id = audio.speaker_id
             WHERE
               skylink IS NOT NULL
-              ${queryFilter.title}
-              ${queryFilter.book}
-              ${queryFilter.series}
-              ${queryFilter.speaker}
+              ${queryFilter.titleFilter}
+              ${queryFilter.bookFilter}
+              ${queryFilter.seriesFilter}
+              ${queryFilter.speakerFilter}
             ORDER BY ${queryOptions.sort}
             LIMIT ${queryOptions.rowsPerPage} OFFSET ${(queryOptions.page - 1) * queryOptions.rowsPerPage};
           `);
@@ -133,10 +133,10 @@ function Sermons() {
               LEFT JOIN speakers ON speakers.id = audio.speaker_id
             WHERE
               skylink IS NOT NULL
-              ${queryFilter.title}
-              ${queryFilter.book}
-              ${queryFilter.series}
-              ${queryFilter.speaker};
+              ${queryFilter.titleFilter}
+              ${queryFilter.bookFilter}
+              ${queryFilter.seriesFilter}
+              ${queryFilter.speakerFilter};
           `);
           setRowCount(response[0].values[0][0]);
         }
@@ -152,12 +152,15 @@ function Sermons() {
       { sermonData ?
         [
           <QueryFilterPanel
+            key="FilterPanel"
+            db={db}
             queryFilter={queryFilter}
             setQueryFilter={setQueryFilter}
             queryOptions={queryOptions}
             setQueryOptions={setQueryOptions}
           />,
           <PageNumbers
+            key="PageNumbers1"
             rowCount={rowCount}
             queryOptions={queryOptions}
             setQueryOptions={setQueryOptions}
@@ -173,6 +176,7 @@ function Sermons() {
               date={element.date}/>
           ),
           <PageNumbers
+          key="PageNumbers2"
             rowCount={rowCount}
             queryOptions={queryOptions}
             setQueryOptions={setQueryOptions}
