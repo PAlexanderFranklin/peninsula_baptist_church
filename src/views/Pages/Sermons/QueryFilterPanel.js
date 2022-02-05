@@ -86,12 +86,19 @@ function QueryFilterPanel(props) {
     runQuery();
   }, [db]);
 
-  // useEffect(() => {
-  //   let tempFilter = "";
-  //   if (speaker) {
-
-  //   }
-  // }, [speaker, book, series])
+  useEffect(() => {
+    let tempFilter = "";
+    if (speaker) {
+      tempFilter = tempFilter + " AND speaker = '" + speaker + "'";
+    }
+    if (book) {
+      tempFilter = tempFilter + " AND book = '" + book + "'";
+    }
+    if (series) {
+      tempFilter = tempFilter + " AND series = '" + series + "'";
+    }
+    setQueryFilter(tempFilter);
+  }, [speaker, book, series])
 
   return (
     <div className="QueryFilterPanel">
