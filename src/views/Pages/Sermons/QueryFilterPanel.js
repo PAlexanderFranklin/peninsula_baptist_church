@@ -6,6 +6,9 @@ function QueryFilterPanel(props) {
   const { db, queryFilter, setQueryFilter, queryOptions, setQueryOptions } = props;
   const [ speakers, setSpeakers ] = useState(null);
   const [ books, setBooks ] = useState(null);
+  const [ seriesList, setSeriesList ] = useState(null);
+  const [ speaker, setSpeaker ] = useState(null);
+  const [ book, setBook ] = useState(null);
   const [ series, setSeries ] = useState(null);
 
   useEffect(() => {
@@ -74,7 +77,7 @@ function QueryFilterPanel(props) {
           values.forEach(element => {
             names.push(element[0]);
           });
-          setSeries(names);
+          setSeriesList(names);
         }
       } catch (err) {
         console.log(err);
