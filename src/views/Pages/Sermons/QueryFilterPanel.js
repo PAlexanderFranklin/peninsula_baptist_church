@@ -86,6 +86,13 @@ function QueryFilterPanel(props) {
     runQuery();
   }, [db]);
 
+  // useEffect(() => {
+  //   let tempFilter = "";
+  //   if (speaker) {
+
+  //   }
+  // }, [speaker, book, series])
+
   return (
     <div className="QueryFilterPanel">
       Query Filter Panel

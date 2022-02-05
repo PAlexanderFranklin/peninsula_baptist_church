@@ -18,14 +18,7 @@ function Sermons() {
   const [ sermonData, setSermonData ] = useState(null);
   const [ errorState, setErrorState ] = useState(null);
   const [ rowCount, setRowCount ] = useState(0);
-  const [ queryFilter, setQueryFilter ] = useState(
-    {
-      titleFilter: ``,
-      bookFilter: ``,
-      seriesFilter: ``,
-      speakerFilter: ``,
-    }
-  );
+  const [ queryFilter, setQueryFilter ] = useState('');
   const [ queryOptions, setQueryOptions ] = useState(
     {
       sort: `date DESC`,
@@ -92,10 +85,7 @@ function Sermons() {
               LEFT JOIN speakers ON speakers.id = audio.speaker_id
             WHERE
               skylink IS NOT NULL
-              ${queryFilter.titleFilter}
-              ${queryFilter.bookFilter}
-              ${queryFilter.seriesFilter}
-              ${queryFilter.speakerFilter}
+              ${queryFilter}
             ORDER BY ${queryOptions.sort}
             LIMIT ${queryOptions.rowsPerPage} OFFSET ${(queryOptions.page - 1) * queryOptions.rowsPerPage};
           `);
@@ -133,10 +123,7 @@ function Sermons() {
               LEFT JOIN speakers ON speakers.id = audio.speaker_id
             WHERE
               skylink IS NOT NULL
-              ${queryFilter.titleFilter}
-              ${queryFilter.bookFilter}
-              ${queryFilter.seriesFilter}
-              ${queryFilter.speakerFilter};
+              ${queryFilter};
           `);
           setRowCount(response[0].values[0][0]);
         }
