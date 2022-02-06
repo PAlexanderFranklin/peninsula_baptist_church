@@ -89,17 +89,22 @@ function Sermons() {
             ORDER BY ${queryOptions.sort}
             LIMIT ${queryOptions.rowsPerPage} OFFSET ${(queryOptions.page - 1) * queryOptions.rowsPerPage};
           `);
-          const columns = response[0].columns;
-          const values = response[0].values;
-          let rows = [];
-          values.forEach(element => {
-            let row = {};
-            for (let i = 0; i < columns.length; i++) {
-              row[columns[i]] = element[i];
-            }
-            rows.push(row);
-          });
-          setSermonData(rows);
+          if (response[0]) {
+            const columns = response[0].columns;
+            const values = response[0].values;
+            let rows = [];
+            values.forEach(element => {
+              let row = {};
+              for (let i = 0; i < columns.length; i++) {
+                row[columns[i]] = element[i];
+              }
+              rows.push(row);
+            });
+            setSermonData(rows);
+          }
+          else {
+            setSermonData([]);
+          }
         }
       } catch (err) {
         console.log(err);
@@ -125,7 +130,12 @@ function Sermons() {
               skylink IS NOT NULL
               ${queryFilter};
           `);
-          setRowCount(response[0].values[0][0]);
+          if (response[0].values) {
+            setRowCount(response[0].values[0][0]);
+          }
+          else {
+            setRowCount(0);
+          }
         }
       } catch (err) {
         console.log(err);
@@ -152,6 +162,7 @@ function Sermons() {
             queryOptions={queryOptions}
             setQueryOptions={setQueryOptions}
           />,
+          sermonData[0] ?
           sermonData.map(element => 
             <Row
               key={element.file_name}
@@ -161,7 +172,8 @@ function Sermons() {
               passage={element.book + " " + element.verse}
               speaker={element.speaker}
               date={element.date}/>
-          ),
+          )
+          : "No results match that search.",
           <PageNumbers
           key="PageNumbers2"
             rowCount={rowCount}
