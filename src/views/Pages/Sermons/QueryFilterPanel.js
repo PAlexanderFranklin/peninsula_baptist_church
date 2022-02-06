@@ -4,9 +4,9 @@ import './QueryFilterPanel.css';
 function QueryFilterPanel(props) {
 
   const { db, queryFilter, setQueryFilter, queryOptions, setQueryOptions } = props;
-  const [ speakers, setSpeakers ] = useState([]);
-  const [ books, setBooks ] = useState([]);
-  const [ seriesList, setSeriesList ] = useState([]);
+  const [ speakers, setSpeakers ] = useState(null);
+  const [ books, setBooks ] = useState(null);
+  const [ seriesList, setSeriesList ] = useState(null);
   const [ speaker, setSpeaker ] = useState(null);
   const [ book, setBook ] = useState(null);
   const [ series, setSeries ] = useState(null);
@@ -103,22 +103,25 @@ function QueryFilterPanel(props) {
   return (
     <div className="QueryFilterPanel">
       <label>Speaker</label>
-      <select>
-        {speakers.map((element) => {
-          <option value={element}>element</option>
-        })}
+      <select onChange={e => setSpeaker(e.target.value)}>
+        <option value="">Any</option>
+        {speakers ? speakers.map(element => 
+          <option key={element} value={element}>{element}</option>
+        ) : ""}
       </select>
       <label>Book</label>
-      <select>
-        {books.map((element) => {
-          <option value={element}>element</option>
-        })}
+      <select onChange={e => setBook(e.target.value)}>
+        <option value="">Any</option>
+        {books ? books.map(element => 
+          <option value={element}>{element}</option>
+        ) : ""}
       </select>
       <label>Series</label>
-      <select>
-        {seriesList.map((element) => {
-          <option value={element}>element</option>
-        })}
+      <select onChange={e => setSeries(e.target.value)}>
+        <option value="">Any</option>
+        {seriesList ? seriesList.map(element => 
+          <option value={element}>{element}</option>
+        ): ""}
       </select>
     </div>
   );
