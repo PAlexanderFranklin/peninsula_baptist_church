@@ -89,20 +89,20 @@ function QueryFilterPanel(props) {
   useEffect(() => {
     let tempFilter = "";
     if (speaker) {
-      tempFilter = tempFilter + " AND speaker = '" + speaker + "'";
+      tempFilter = tempFilter + " AND speakers.name = '" + speaker + "'";
     }
     if (book) {
-      tempFilter = tempFilter + " AND book = '" + book + "'";
+      tempFilter = tempFilter + " AND books.name = '" + book + "'";
     }
     if (series) {
-      tempFilter = tempFilter + " AND series = '" + series + "'";
+      tempFilter = tempFilter + " AND series.name = '" + series + "'";
     }
     setQueryFilter(tempFilter);
   }, [speaker, book, series])
 
   return (
     <div className="QueryFilterPanel">
-      Query Filter Panel
+      <button onClick={() => {setSpeaker("Thomas Hardy")}}>Change Query Filter</button>
     </div>
   );
 }
