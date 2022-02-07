@@ -7,9 +7,9 @@ function QueryFilterPanel(props) {
   const [ speakers, setSpeakers ] = useState(null);
   const [ books, setBooks ] = useState(null);
   const [ seriesList, setSeriesList ] = useState(null);
-  const [ speaker, setSpeaker ] = useState(null);
-  const [ book, setBook ] = useState(null);
-  const [ series, setSeries ] = useState(null);
+  const [ speaker, setSpeaker ] = useState('%');
+  const [ book, setBook ] = useState('%');
+  const [ series, setSeries ] = useState('%');
 
   useEffect(() => {
     async function runQuery() {
@@ -87,17 +87,7 @@ function QueryFilterPanel(props) {
   }, [db]);
 
   useEffect(() => {
-    let tempFilter = "";
-    if (speaker) {
-      tempFilter = tempFilter + " AND speakers.name = '" + speaker + "'";
-    }
-    if (book) {
-      tempFilter = tempFilter + " AND books.name = '" + book + "'";
-    }
-    if (series) {
-      tempFilter = tempFilter + " AND series.name = '" + series + "'";
-    }
-    setQueryFilter(tempFilter);
+    setQueryFilter({...queryFilter, speaker: speaker, book: book, series: series});
   }, [speaker, book, series])
 
   return (
@@ -105,7 +95,7 @@ function QueryFilterPanel(props) {
       <div className='filter_dropdown'>
         <label>Speaker</label>
         <select onChange={e => setSpeaker(e.target.value)}>
-          <option value="">Any</option>
+          <option value="%">Any</option>
           {speakers ? speakers.map(element => 
             <option key={element} value={element}>{element}</option>
           ) : ""}
@@ -114,18 +104,18 @@ function QueryFilterPanel(props) {
       <div className='filter_dropdown'>
         <label>Book</label>
         <select onChange={e => setBook(e.target.value)}>
-          <option value="">Any</option>
+          <option value="%">Any</option>
           {books ? books.map(element => 
-            <option value={element}>{element}</option>
+            <option key={element} value={element}>{element}</option>
           ) : ""}
         </select>
       </div>
       <div className='filter_dropdown'>
         <label>Series</label>
         <select onChange={e => setSeries(e.target.value)}>
-          <option value="">Any</option>
+          <option value="%">Any</option>
           {seriesList ? seriesList.map(element => 
-            <option value={element}>{element}</option>
+            <option key={element} value={element}>{element}</option>
           ): ""}
         </select>
       </div>
