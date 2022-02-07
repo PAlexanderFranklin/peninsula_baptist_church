@@ -1,0 +1,21 @@
+.PageNumbers {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.page_button {
+  margin: 0.25rem;
+  height: 2rem;
+  width: 3rem;
+  font-size: 1.25rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.4rem;
+  border-color: lightgrey;
+}
+
+.active_page_button {
+  background-color: hsl(43, 100%, 81%);
+}
