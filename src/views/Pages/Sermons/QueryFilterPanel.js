@@ -102,27 +102,33 @@ function QueryFilterPanel(props) {
 
   return (
     <div className="QueryFilterPanel">
-      <label>Speaker</label>
-      <select onChange={e => setSpeaker(e.target.value)}>
-        <option value="">Any</option>
-        {speakers ? speakers.map(element => 
-          <option key={element} value={element}>{element}</option>
-        ) : ""}
-      </select>
-      <label>Book</label>
-      <select onChange={e => setBook(e.target.value)}>
-        <option value="">Any</option>
-        {books ? books.map(element => 
-          <option value={element}>{element}</option>
-        ) : ""}
-      </select>
-      <label>Series</label>
-      <select onChange={e => setSeries(e.target.value)}>
-        <option value="">Any</option>
-        {seriesList ? seriesList.map(element => 
-          <option value={element}>{element}</option>
-        ): ""}
-      </select>
+      <div className='filter_dropdown'>
+        <label>Speaker</label>
+        <select onChange={e => setSpeaker(e.target.value)}>
+          <option value="">Any</option>
+          {speakers ? speakers.map(element => 
+            <option key={element} value={element}>{element}</option>
+          ) : ""}
+        </select>
+      </div>
+      <div className='filter_dropdown'>
+        <label>Book</label>
+        <select onChange={e => setBook(e.target.value)}>
+          <option value="">Any</option>
+          {books ? books.map(element => 
+            <option value={element}>{element}</option>
+          ) : ""}
+        </select>
+      </div>
+      <div className='filter_dropdown'>
+        <label>Series</label>
+        <select onChange={e => setSeries(e.target.value)}>
+          <option value="">Any</option>
+          {seriesList ? seriesList.map(element => 
+            <option value={element}>{element}</option>
+          ): ""}
+        </select>
+      </div>
     </div>
   );
 }
