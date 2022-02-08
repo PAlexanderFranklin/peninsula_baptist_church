@@ -26,3 +26,9 @@
 .speaker {
   margin-left: 5rem;
 }
+
+@media (max-width: 60rem) {
+  .audio_container audio {
+      width: 15rem;
+  }
+}
