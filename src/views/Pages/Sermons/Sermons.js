@@ -29,7 +29,7 @@ function Sermons() {
     {
       sort: `date DESC`,
       page: 1,
-      rowsPerPage: 5,
+      rowsPerPage: 10,
     }
   );
   
