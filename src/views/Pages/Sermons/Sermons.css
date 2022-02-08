@@ -18,6 +18,7 @@
 
 @media (max-width: 60rem) {
   .Sermons {
-      width: 90%;
+    padding: 0rem;
+    width: 98%;
   }
 }

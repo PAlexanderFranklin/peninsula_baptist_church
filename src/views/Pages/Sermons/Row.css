@@ -28,7 +28,26 @@
 }
 
 @media (max-width: 60rem) {
+  .Row {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+
+  .audio_container {
+    margin-left: 0rem;
+    width: 85vw;
+  }
+
   .audio_container audio {
-      width: 15rem;
+    width: 85vw;
+  }
+
+  .id_data {
+    margin-left: 0rem;
+    align-items: center;
+  }
+
+  .speaker {
+    margin-left: 0rem;
   }
 }
