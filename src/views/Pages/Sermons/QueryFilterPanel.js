@@ -26,7 +26,6 @@ function QueryFilterPanel(props) {
                 audio
                 LEFT JOIN books ON books.id = audio.book_id
                 LEFT JOIN series ON series.id = audio.series_id
-                LEFT JOIN speakers ON speakers.id = audio.speaker_id
               WHERE
                 skylink IS NOT NULL
                 AND books.name LIKE ?
@@ -61,7 +60,6 @@ function QueryFilterPanel(props) {
               SELECT DISTINCT book_id
               FROM
                 audio
-                LEFT JOIN books ON books.id = audio.book_id
                 LEFT JOIN series ON series.id = audio.series_id
                 LEFT JOIN speakers ON speakers.id = audio.speaker_id
               WHERE
@@ -99,7 +97,6 @@ function QueryFilterPanel(props) {
               FROM
                 audio
                 LEFT JOIN books ON books.id = audio.book_id
-                LEFT JOIN series ON series.id = audio.series_id
                 LEFT JOIN speakers ON speakers.id = audio.speaker_id
               WHERE
                 skylink IS NOT NULL
