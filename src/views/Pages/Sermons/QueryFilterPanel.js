@@ -20,6 +20,10 @@ function QueryFilterPanel(props) {
               name
             FROM
               speakers
+            WHERE id IN (
+              SELECT DISTINCT speaker_id
+              FROM audio
+            )
             ORDER BY name ASC;
           `);
           const values = response[0].values;
@@ -45,6 +49,10 @@ function QueryFilterPanel(props) {
               name
             FROM
               books
+            WHERE id IN (
+              SELECT DISTINCT book_id
+              FROM audio
+            )
             ORDER BY name ASC;
           `);
           const values = response[0].values;
@@ -70,6 +78,10 @@ function QueryFilterPanel(props) {
               name
             FROM
               series
+            WHERE id IN (
+              SELECT DISTINCT series_id
+              FROM audio
+            )
             ORDER BY name ASC;
           `);
           const values = response[0].values;
