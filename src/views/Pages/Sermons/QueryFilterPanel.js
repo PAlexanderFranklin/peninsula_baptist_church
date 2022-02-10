@@ -22,10 +22,18 @@ function QueryFilterPanel(props) {
               speakers
             WHERE id IN (
               SELECT DISTINCT speaker_id
-              FROM audio
+              FROM
+                audio
+                LEFT JOIN books ON books.id = audio.book_id
+                LEFT JOIN series ON series.id = audio.series_id
+                LEFT JOIN speakers ON speakers.id = audio.speaker_id
+              WHERE
+                skylink IS NOT NULL
+                AND books.name LIKE ?
+                AND series.name LIKE ?
             )
             ORDER BY name ASC;
-          `);
+          `, [book, series]);
           const values = response[0].values;
           let names = [];
           values.forEach(element => {
@@ -38,7 +46,7 @@ function QueryFilterPanel(props) {
       }
     }
     runQuery();
-  }, [db]);
+  }, [db, book, series]);
 
   useEffect(() => {
     async function runQuery() {
@@ -51,10 +59,18 @@ function QueryFilterPanel(props) {
               books
             WHERE id IN (
               SELECT DISTINCT book_id
-              FROM audio
+              FROM
+                audio
+                LEFT JOIN books ON books.id = audio.book_id
+                LEFT JOIN series ON series.id = audio.series_id
+                LEFT JOIN speakers ON speakers.id = audio.speaker_id
+              WHERE
+                skylink IS NOT NULL
+                AND series.name LIKE ?
+                AND speakers.name LIKE ?
             )
             ORDER BY name ASC;
-          `);
+          `, [series, speaker]);
           const values = response[0].values;
           let names = [];
           values.forEach(element => {
@@ -67,7 +83,7 @@ function QueryFilterPanel(props) {
       }
     }
     runQuery();
-  }, [db]);
+  }, [db, series, speaker]);
 
   useEffect(() => {
     async function runQuery() {
@@ -80,10 +96,18 @@ function QueryFilterPanel(props) {
               series
             WHERE id IN (
               SELECT DISTINCT series_id
-              FROM audio
+              FROM
+                audio
+                LEFT JOIN books ON books.id = audio.book_id
+                LEFT JOIN series ON series.id = audio.series_id
+                LEFT JOIN speakers ON speakers.id = audio.speaker_id
+              WHERE
+                skylink IS NOT NULL
+                AND books.name LIKE ?
+                AND speakers.name LIKE ?
             )
             ORDER BY name ASC;
-          `);
+          `, [book, speaker]);
           const values = response[0].values;
           let names = [];
           values.forEach(element => {
@@ -96,7 +120,7 @@ function QueryFilterPanel(props) {
       }
     }
     runQuery();
-  }, [db]);
+  }, [db, book, speaker]);
 
   useEffect(() => {
     setQueryFilter({...queryFilter, speaker: speaker, book: book, series: series});
