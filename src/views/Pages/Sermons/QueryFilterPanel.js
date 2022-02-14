@@ -10,6 +10,8 @@ function QueryFilterPanel(props) {
   const [ speaker, setSpeaker ] = useState('%');
   const [ book, setBook ] = useState('%');
   const [ series, setSeries ] = useState('%');
+  const [ search, setSearch ] = useState("");
+
 
   useEffect(() => {
     async function runQuery() {
@@ -151,6 +153,10 @@ function QueryFilterPanel(props) {
             <option key={element} value={element}>{element}</option>
           ): ""}
         </select>
+      </div>
+      <div>
+        <label>Search: </label>
+        <textarea onChange={e => setSearch(e.target.value)}>{search}</textarea>
       </div>
     </div>
   );
