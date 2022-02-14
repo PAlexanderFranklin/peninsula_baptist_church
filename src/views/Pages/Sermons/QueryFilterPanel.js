@@ -156,7 +156,8 @@ function QueryFilterPanel(props) {
       </div>
       <div>
         <label>Search: </label>
-        <textarea onChange={e => setSearch(e.target.value)}>{search}</textarea>
+        <input type="text" placeholder={search} onChange={e => setSearch(e.target.value)}></input>
+        <button onClick={() => setQueryFilter({...queryFilter, search: search})}>search</button>
       </div>
     </div>
   );

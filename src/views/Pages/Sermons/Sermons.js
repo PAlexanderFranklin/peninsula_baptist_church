@@ -23,6 +23,7 @@ function Sermons() {
       book: '%',
       series: '%',
       speaker: '%',
+      search: ""
     }
   );
   const [ queryOptions, setQueryOptions ] = useState(
@@ -94,9 +95,15 @@ function Sermons() {
               AND book LIKE ?
               AND series LIKE ?
               AND speaker LIKE ?
+              AND speaker LIKE '%' || ? || '%'
             ORDER BY ${queryOptions.sort}
             LIMIT ${queryOptions.rowsPerPage} OFFSET ${(queryOptions.page - 1) * queryOptions.rowsPerPage};
-          `, [queryFilter.book, queryFilter.series, queryFilter.speaker]);
+          `, [
+              queryFilter.book,
+              queryFilter.series,
+              queryFilter.speaker,
+              queryFilter.search
+            ]);
           if (response[0]) {
             const columns = response[0].columns;
             const values = response[0].values;
@@ -135,11 +142,15 @@ function Sermons() {
               LEFT JOIN series ON series.id = audio.series_id
               LEFT JOIN speakers ON speakers.id = audio.speaker_id
             WHERE
-            skylink IS NOT NULL
-            AND books.name LIKE ?
-            AND series.name LIKE ?
-            AND speakers.name LIKE ?;
-          `, [queryFilter.book, queryFilter.series, queryFilter.speaker]);
+              skylink IS NOT NULL
+              AND books.name LIKE ?
+              AND series.name LIKE ?
+              AND speakers.name LIKE ?;
+          `, [
+            queryFilter.book,
+            queryFilter.series,
+            queryFilter.speaker,
+          ]);
           if (response[0].values) {
             setRowCount(response[0].values[0][0]);
           }
