@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import FilterDropdown from './FilterDropdown';
 import './QueryFilterPanel.css';
 
 function QueryFilterPanel(props) {
@@ -144,35 +145,17 @@ function QueryFilterPanel(props) {
 
   return (
     <div className="QueryFilterPanel">
+      <FilterDropdown setItem={setSpeaker} itemList={speakers}>
+        Speaker
+      </FilterDropdown>
+      <FilterDropdown setItem={setBook} itemList={books}>
+        Book
+      </FilterDropdown>
+      <FilterDropdown setItem={setSeries} itemList={seriesList}>
+        Series
+      </FilterDropdown>
       <div className='filter_option'>
-        <label>Speaker</label>
-        <select onChange={e => setSpeaker(e.target.value)}>
-          <option value="%">Any</option>
-          {speakers ? speakers.map(element => 
-            <option key={element} value={element}>{element}</option>
-          ) : ""}
-        </select>
-      </div>
-      <div className='filter_option'>
-        <label>Book</label>
-        <select onChange={e => setBook(e.target.value)}>
-          <option value="%">Any</option>
-          {books ? books.map(element => 
-            <option key={element} value={element}>{element}</option>
-          ) : ""}
-        </select>
-      </div>
-      <div className='filter_option'>
-        <label>Series</label>
-        <select onChange={e => setSeries(e.target.value)}>
-          <option value="%">Any</option>
-          {seriesList ? seriesList.map(element => 
-            <option key={element} value={element}>{element}</option>
-          ): ""}
-        </select>
-      </div>
-      <div className='filter_option'>
-        <label>Search: </label>
+        <label>Search</label>
         <input type="text" placeholder={search} onChange={e => updateSearch(e.target.value)}></input>
       </div>
     </div>
