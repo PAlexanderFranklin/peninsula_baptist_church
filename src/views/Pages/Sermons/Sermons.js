@@ -5,9 +5,9 @@ import initSqlJs from 'sql.js';
 import sqlWasm from "!!file-loader?name=sql-wasm-[contenthash].wasm!sql.js/dist/sql-wasm.wasm";
 
 import './Sermons.css';
-import PageNumbers from "./PageNumbers";
-import QueryFilterPanel from './QueryFilterPanel';
-import Row from "./Row";
+import PageNumbers from "./Table/PageNumbers";
+import QueryFilterPanel from './QueryFilterPanel/QueryFilterPanel';
+import Row from "./Table/Row";
 import { SkynetContext } from '../../../state/SkynetContext';
 
 function Sermons() {

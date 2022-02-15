@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Row.css';
-import { SkynetContext } from '../../../state/SkynetContext';
+import { SkynetContext } from '../../../../state/SkynetContext';
 
 function Row(props) {
 
