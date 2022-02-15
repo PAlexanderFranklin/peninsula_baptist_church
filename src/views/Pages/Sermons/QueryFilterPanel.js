@@ -123,7 +123,15 @@ function QueryFilterPanel(props) {
   }, [db, book, speaker]);
 
   useEffect(() => {
-    setQueryFilter({...queryFilter, $speaker: speaker, $book: book, $series: series, $search: search});
+    setQueryFilter(
+      {
+        ...queryFilter,
+        $speaker: speaker,
+        $book: book,
+        $series: series,
+        $search: search
+      }
+    );
   }, [speaker, book, series, search])
 
   function updateSearch(value) {
