@@ -95,13 +95,19 @@ function Sermons() {
               AND book LIKE ?
               AND series LIKE ?
               AND speaker LIKE ?
-              AND speaker LIKE '%' || ? || '%'
+              AND (series LIKE '%' || ? || '%'
+              OR book LIKE '%' || ? || '%'
+              OR speaker LIKE '%' || ? || '%'
+              OR title LIKE '%' || ? || '%')
             ORDER BY ${queryOptions.sort}
             LIMIT ${queryOptions.rowsPerPage} OFFSET ${(queryOptions.page - 1) * queryOptions.rowsPerPage};
           `, [
               queryFilter.book,
               queryFilter.series,
               queryFilter.speaker,
+              queryFilter.search,
+              queryFilter.search,
+              queryFilter.search,
               queryFilter.search
             ]);
           if (response[0]) {
@@ -145,11 +151,19 @@ function Sermons() {
               skylink IS NOT NULL
               AND books.name LIKE ?
               AND series.name LIKE ?
-              AND speakers.name LIKE ?;
+              AND speakers.name LIKE ?
+              AND (series.name LIKE '%' || ? || '%'
+              OR books.name LIKE '%' || ? || '%'
+              OR speakers.name LIKE '%' || ? || '%'
+              OR title LIKE '%' || ? || '%');
           `, [
             queryFilter.book,
             queryFilter.series,
             queryFilter.speaker,
+            queryFilter.search,
+            queryFilter.search,
+            queryFilter.search,
+            queryFilter.search
           ]);
           if (response[0].values) {
             setRowCount(response[0].values[0][0]);
