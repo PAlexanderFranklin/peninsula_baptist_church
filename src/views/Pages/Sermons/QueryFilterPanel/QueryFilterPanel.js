@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import FilterDropdown from './FilterDropdown';
 import './QueryFilterPanel.css';
 
 function QueryFilterPanel(props) {
@@ -10,6 +11,9 @@ function QueryFilterPanel(props) {
   const [ speaker, setSpeaker ] = useState('%');
   const [ book, setBook ] = useState('%');
   const [ series, setSeries ] = useState('%');
+  const [ search, setSearch ] = useState("");
+  const [ typingTimeout, setTypingTimeout ] = useState(0);
+
 
   useEffect(() => {
     async function runQuery() {
@@ -120,37 +124,39 @@ function QueryFilterPanel(props) {
   }, [db, book, speaker]);
 
   useEffect(() => {
-    setQueryFilter({...queryFilter, speaker: speaker, book: book, series: series});
-  }, [speaker, book, series])
+    setQueryFilter(
+      {
+        ...queryFilter,
+        $speaker: speaker,
+        $book: book,
+        $series: series,
+        $search: search
+      }
+    );
+  }, [speaker, book, series, search])
+
+  function updateSearch(value) {
+    if(typingTimeout) {
+      clearTimeout(typingTimeout);
+    }
+
+    setTypingTimeout(setTimeout(() => {setSearch(value)}, 1000))
+  }
 
   return (
     <div className="QueryFilterPanel">
-      <div className='filter_dropdown'>
-        <label>Speaker</label>
-        <select onChange={e => setSpeaker(e.target.value)}>
-          <option value="%">Any</option>
-          {speakers ? speakers.map(element => 
-            <option key={element} value={element}>{element}</option>
-          ) : ""}
-        </select>
-      </div>
-      <div className='filter_dropdown'>
-        <label>Book</label>
-        <select onChange={e => setBook(e.target.value)}>
-          <option value="%">Any</option>
-          {books ? books.map(element => 
-            <option key={element} value={element}>{element}</option>
-          ) : ""}
-        </select>
-      </div>
-      <div className='filter_dropdown'>
-        <label>Series</label>
-        <select onChange={e => setSeries(e.target.value)}>
-          <option value="%">Any</option>
-          {seriesList ? seriesList.map(element => 
-            <option key={element} value={element}>{element}</option>
-          ): ""}
-        </select>
+      <FilterDropdown setItem={setSpeaker} itemList={speakers}>
+        Speaker
+      </FilterDropdown>
+      <FilterDropdown setItem={setBook} itemList={books}>
+        Book
+      </FilterDropdown>
+      <FilterDropdown setItem={setSeries} itemList={seriesList}>
+        Series
+      </FilterDropdown>
+      <div className='filter_option'>
+        <label>Search</label>
+        <input type="text" placeholder={search} onChange={e => updateSearch(e.target.value)}></input>
       </div>
     </div>
   );
