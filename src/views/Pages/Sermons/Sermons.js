@@ -20,10 +20,10 @@ function Sermons() {
   const [ rowCount, setRowCount ] = useState(0);
   const [ queryFilter, setQueryFilter ] = useState(
     {
-      book: '%',
-      series: '%',
-      speaker: '%',
-      search: ""
+      $book: '%',
+      $series: '%',
+      $speaker: '%',
+      $search: ""
     }
   );
   const [ queryOptions, setQueryOptions ] = useState(
@@ -92,24 +92,16 @@ function Sermons() {
               LEFT JOIN speakers ON speakers.id = audio.speaker_id
             WHERE
               skylink IS NOT NULL
-              AND book LIKE ?
-              AND series LIKE ?
-              AND speaker LIKE ?
-              AND (series LIKE '%' || ? || '%'
-              OR book LIKE '%' || ? || '%'
-              OR speaker LIKE '%' || ? || '%'
-              OR title LIKE '%' || ? || '%')
+              AND book LIKE $book
+              AND series LIKE $series
+              AND speaker LIKE $speaker
+              AND (series LIKE '%' || $search || '%'
+              OR book LIKE '%' || $search || '%'
+              OR speaker LIKE '%' || $search || '%'
+              OR title LIKE '%' || $search || '%')
             ORDER BY ${queryOptions.sort}
             LIMIT ${queryOptions.rowsPerPage} OFFSET ${(queryOptions.page - 1) * queryOptions.rowsPerPage};
-          `, [
-              queryFilter.book,
-              queryFilter.series,
-              queryFilter.speaker,
-              queryFilter.search,
-              queryFilter.search,
-              queryFilter.search,
-              queryFilter.search
-            ]);
+          `, queryFilter);
           if (response[0]) {
             const columns = response[0].columns;
             const values = response[0].values;
@@ -149,22 +141,14 @@ function Sermons() {
               LEFT JOIN speakers ON speakers.id = audio.speaker_id
             WHERE
               skylink IS NOT NULL
-              AND books.name LIKE ?
-              AND series.name LIKE ?
-              AND speakers.name LIKE ?
-              AND (series.name LIKE '%' || ? || '%'
-              OR books.name LIKE '%' || ? || '%'
-              OR speakers.name LIKE '%' || ? || '%'
-              OR title LIKE '%' || ? || '%');
-          `, [
-            queryFilter.book,
-            queryFilter.series,
-            queryFilter.speaker,
-            queryFilter.search,
-            queryFilter.search,
-            queryFilter.search,
-            queryFilter.search
-          ]);
+              AND books.name LIKE $book
+              AND series.name LIKE $series
+              AND speakers.name LIKE $speaker
+              AND (series.name LIKE '%' || $search || '%'
+              OR books.name LIKE '%' || $search || '%'
+              OR speakers.name LIKE '%' || $search || '%'
+              OR title LIKE '%' || $search || '%');
+          `, queryFilter);
           if (response[0].values) {
             setRowCount(response[0].values[0][0]);
           }

@@ -122,7 +122,7 @@ function QueryFilterPanel(props) {
   }, [db, book, speaker]);
 
   useEffect(() => {
-    setQueryFilter({...queryFilter, speaker: speaker, book: book, series: series});
+    setQueryFilter({...queryFilter, $speaker: speaker, $book: book, $series: series});
   }, [speaker, book, series])
 
   return (
@@ -157,7 +157,7 @@ function QueryFilterPanel(props) {
       <div>
         <label>Search: </label>
         <input type="text" placeholder={search} onChange={e => setSearch(e.target.value)}></input>
-        <button onClick={() => setQueryFilter({...queryFilter, search: search})}>search</button>
+        <button onClick={() => setQueryFilter({...queryFilter, $search: search})}>search</button>
       </div>
     </div>
   );
