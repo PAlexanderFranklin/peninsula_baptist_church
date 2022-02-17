@@ -96,7 +96,7 @@ function Sermons() {
               AND series LIKE $series
               AND speaker LIKE $speaker
               AND (series LIKE '%' || $search || '%'
-              OR book LIKE '%' || $search || '%'
+              OR book || ' ' || verse LIKE '%' || $search || '%'
               OR speaker LIKE '%' || $search || '%'
               OR title LIKE '%' || $search || '%')
             ORDER BY ${queryOptions.sort}
@@ -145,7 +145,7 @@ function Sermons() {
               AND series.name LIKE $series
               AND speakers.name LIKE $speaker
               AND (series.name LIKE '%' || $search || '%'
-              OR books.name LIKE '%' || $search || '%'
+              OR books.name || ' ' || verse LIKE '%' || $search || '%'
               OR speakers.name LIKE '%' || $search || '%'
               OR title LIKE '%' || $search || '%');
           `, queryFilter);
