@@ -201,12 +201,22 @@ function Sermons() {
             setQueryOptions={setQueryOptions}
           />
         ]
-        : <div>{errorState ?
-          <div className="error_container">
-            {errorState}
-            <button onClick={getDatabase} className="retry_button">Retry</button>
-          </div> :
-            "Loading..."}
+        : <div>
+            {errorState ?
+              <div className="status_container">
+                {errorState}
+                <button
+                  onClick={getDatabase}
+                  className="retry_button"
+                >
+                  Retry
+                </button>
+              </div>
+            :
+              <div className="status_container">
+                Loading...
+              </div>
+            }
           </div>
       }
     </div>
