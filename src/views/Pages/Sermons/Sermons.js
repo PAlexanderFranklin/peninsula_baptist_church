@@ -36,6 +36,7 @@ function Sermons() {
   
   async function getDatabase() {
     try {
+      setErrorState(null);
       const response = await client.getFileContent(
         "VABoLrf4IJzE1x3RDQ6gc2czpSpJ3t3ssKMabsI0w45Efg", // Database skylink
         { responseType: "arraybuffer" }
