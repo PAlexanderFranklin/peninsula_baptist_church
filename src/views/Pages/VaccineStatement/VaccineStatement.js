@@ -17,7 +17,7 @@ function VaccineStatement(props) {
       </p>
       <p>
         This statement is also available as a <a
-          href="https://siasky.net/bABe9dNJvBNUM5uWmGjXdzn2txyjmojPBbmiUhmJymizUg"
+          href="https://fileportal.org/bABe9dNJvBNUM5uWmGjXdzn2txyjmojPBbmiUhmJymizUg"
           target="_blank"
           rel="noopener noreferrer"
           >
