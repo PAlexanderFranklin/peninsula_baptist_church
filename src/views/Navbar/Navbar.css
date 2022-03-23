@@ -1,5 +1,5 @@
 .header {
-    height: var(--navbar-height);
+    min-height: var(--navbar-height);
 }
 
 .Navbar {
