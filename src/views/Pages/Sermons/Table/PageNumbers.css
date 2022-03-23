@@ -17,5 +17,5 @@
 }
 
 .active_page_button {
-  background-color: hsl(43, 100%, 81%);
+  background-color: var(--accent-color);
 }

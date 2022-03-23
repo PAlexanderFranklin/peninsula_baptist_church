@@ -1,5 +1,5 @@
 .header {
-    /* height: var(--navbar-height); */
+    height: var(--navbar-height);
 }
 
 .Navbar {
@@ -7,13 +7,13 @@
     width: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient(rgb(0, 0, 0, 1), rgb(0, 0, 0, 0));
+    background: white;
 }
 
 .Navbar a {
     font-size: 1.5em;
     text-decoration: none;
-    color: rgb(231, 231, 231);
+    color: black;
 }
 
 .Navbar ul {
@@ -35,7 +35,7 @@
 }
 
 .hamburger {
-    color: white;
+    color: black;
     width: 2rem;
     height: 2rem;
 }

@@ -1,8 +1,8 @@
 .App {
   text-align: center;
-  --accent-color: rgb(218, 172, 22);
-  --background-color: #FFFFFF;
-  /* --navbar-height: 15rem; */
+  --accent-color: #94A7AE;
+  --background-color: #F4F2F3;
+  --navbar-height: 15rem;
 }
 
 .content {
