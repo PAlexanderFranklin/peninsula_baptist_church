@@ -20,8 +20,6 @@ function Navbar() {
             <li className="Tab">
               <a href="http://www.sbc.net/bfm2000/bfm2000.asp" target="_blank">Statement Of Faith</a>
             </li>
-            {/* <Tab link="/visit">Visit</Tab>
-            <Tab link="/events">Events</Tab> */}
             <Tab link="/statement-on-vaccines">Vaccine Statement</Tab>
           </div>
         </ul>
