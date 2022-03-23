@@ -49,6 +49,10 @@
     padding-right: 10rem;
 }
 
+.home_text {
+    padding-left: 1rem;
+}
+
 .nav_items {
     display: flex;
     flex-flow: row wrap;
