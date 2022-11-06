@@ -10,7 +10,7 @@ function Row(props) {
 
   async function getAudio() {
     try {
-      setAudioURL("https://peninsula-baptist-sermon-audio.s3.us-west-2.amazonaws.com/" + fileName);
+      setAudioURL("https://peninsula-baptist-sermon-audio.s3.us-west-2.amazonaws.com/" + fileName + ".mp3");
       setFetchError(null);
     } catch (error) {
       console.log(error);
