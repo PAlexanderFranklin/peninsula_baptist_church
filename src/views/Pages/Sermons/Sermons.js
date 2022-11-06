@@ -36,7 +36,9 @@ function Sermons() {
     try {
       setErrorState(null);
       const response = await fetch("https://peninsula-baptist-sermon-audio.s3.us-west-2.amazonaws.com/MetaData.db");
-      setDataBaseFile(response.data);
+      const reader = response.body.getReader();
+      const {done, value} = await reader.read();
+      setDataBaseFile(value);
     } catch (error) {
       console.log(error);
       setErrorState("Failed to load Database.");
@@ -54,7 +56,7 @@ function Sermons() {
     try {
       if (dataBaseFile) {
         const SQL = await initSqlJs({ locateFile: () => sqlWasm });
-        setDb(new SQL.Database(new Uint8Array(dataBaseFile)));
+        setDb(new SQL.Database(dataBaseFile));
       }
     } catch (err) {
       console.log(err);
