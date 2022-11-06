@@ -1,18 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Row.css';
-import { SkynetContext } from '../../../../state/SkynetContext';
 
 function Row(props) {
 
-  const {title, series, skylink, passage, speaker, date} = props;
-  const client = useContext(SkynetContext);
+  const {title, series, fileName, passage, speaker, date} = props;
   const [ fetchError, setFetchError ] = useState(null);
 
   const [ audioURL, setAudioURL ] = useState(null);
 
   async function getAudio() {
     try {
-      setAudioURL(await client.getSkylinkUrl(skylink));
+      setAudioURL("https://peninsula-baptist-sermon-audio.s3.us-west-2.amazonaws.com/" + fileName);
       setFetchError(null);
     } catch (error) {
       console.log(error);
@@ -22,7 +20,7 @@ function Row(props) {
 
   useEffect(() => {
     getAudio();
-  }, [skylink])
+  }, [fileName])
 
   let str = date.toString();
   let displayDate = (str[4] + str[5] + '/'

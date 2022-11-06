@@ -31,8 +31,7 @@ function QueryFilterPanel(props) {
                 LEFT JOIN books ON books.id = audio.book_id
                 LEFT JOIN series ON series.id = audio.series_id
               WHERE
-                skylink IS NOT NULL
-                AND books.name LIKE ?
+                books.name LIKE ?
                 AND series.name LIKE ?
             )
             ORDER BY name ASC;
@@ -67,8 +66,7 @@ function QueryFilterPanel(props) {
                 LEFT JOIN series ON series.id = audio.series_id
                 LEFT JOIN speakers ON speakers.id = audio.speaker_id
               WHERE
-                skylink IS NOT NULL
-                AND series.name LIKE ?
+                series.name LIKE ?
                 AND speakers.name LIKE ?
             )
             ORDER BY name ASC;
@@ -103,8 +101,7 @@ function QueryFilterPanel(props) {
                 LEFT JOIN books ON books.id = audio.book_id
                 LEFT JOIN speakers ON speakers.id = audio.speaker_id
               WHERE
-                skylink IS NOT NULL
-                AND books.name LIKE ?
+                books.name LIKE ?
                 AND speakers.name LIKE ?
             )
             ORDER BY name ASC;
