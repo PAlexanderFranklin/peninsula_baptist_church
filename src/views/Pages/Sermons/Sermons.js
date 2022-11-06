@@ -8,11 +8,9 @@ import './Sermons.css';
 import PageNumbers from "./Table/PageNumbers";
 import QueryFilterPanel from './QueryFilterPanel/QueryFilterPanel';
 import Row from "./Table/Row";
-import { SkynetContext } from '../../../state/SkynetContext';
 
 function Sermons() {
 
-  const client = useContext(SkynetContext);
   const [ dataBaseFile, setDataBaseFile ] = useState(null);
   const [ db, setDb ] = useState(null);
   const [ sermonData, setSermonData ] = useState(null);
@@ -37,10 +35,7 @@ function Sermons() {
   async function getDatabase() {
     try {
       setErrorState(null);
-      const response = await client.getFileContent(
-        "VACUhX8JjiyfJ0MtSUZCFv04anM7p0KmAs-3ntXsVtfGCA", // Database skylink
-        { responseType: "arraybuffer" }
-      );
+      const response = await fetch("https://peninsula-baptist-sermon-audio.s3.us-west-2.amazonaws.com/MetaData.db");
       setDataBaseFile(response.data);
     } catch (error) {
       console.log(error);
@@ -50,7 +45,7 @@ function Sermons() {
 
   useEffect(() => {
     getDatabase();
-  }, [client]);
+  }, []);
   
   async function initDB() {
     // sql.js needs to fetch its wasm file, so we cannot immediately instantiate the database
@@ -84,7 +79,6 @@ function Sermons() {
               series.name AS series,
               speakers.name AS speaker,
               date,
-              skylink,
               notes
             FROM
               audio
@@ -92,8 +86,7 @@ function Sermons() {
               LEFT JOIN series ON series.id = audio.series_id
               LEFT JOIN speakers ON speakers.id = audio.speaker_id
             WHERE
-              skylink IS NOT NULL
-              AND book LIKE $book
+              book LIKE $book
               AND series LIKE $series
               AND speaker LIKE $speaker
               AND (series LIKE '%' || $search || '%'
@@ -134,15 +127,14 @@ function Sermons() {
         if (db) {
           const response = db.exec(`
             SELECT
-              COUNT(skylink) AS row_count
+              COUNT(file_name) AS row_count
             FROM
               audio
               LEFT JOIN books ON books.id = audio.book_id
               LEFT JOIN series ON series.id = audio.series_id
               LEFT JOIN speakers ON speakers.id = audio.speaker_id
             WHERE
-              skylink IS NOT NULL
-              AND books.name LIKE $book
+              books.name LIKE $book
               AND series.name LIKE $series
               AND speakers.name LIKE $speaker
               AND (series.name LIKE '%' || $search || '%'
@@ -186,9 +178,9 @@ function Sermons() {
           sermonData.map(element => 
             <Row
               key={element.file_name}
+              fileName={element.file_name}
               title={element.title}
               series={element.series}
-              skylink={element.skylink}
               passage={element.book + " " + element.verse}
               speaker={element.speaker}
               date={element.date}/>
