@@ -19,7 +19,7 @@ function VaccineStatement(props) {
       <p>
         This statement is also available as a{" "}
         <a
-          href="https://s3.console.aws.amazon.com/s3/object/peninsula-baptist-sermon-audio?region=us-west-2&prefix=PeninsulaBaptistVaccineStatement.pdf"
+          href="https://peninsula-baptist-sermon-audio.s3.us-west-2.amazonaws.com/PeninsulaBaptistVaccineStatement.pdf"
           target="_blank"
           rel="noopener noreferrer"
         >
